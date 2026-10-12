@@ -193,41 +193,40 @@
             else { body.setAttribute('data-theme', 'dark'); themeBtn.textContent = '☀️ Light Mode'; }
         });
 
-        /* Improved Exit Intent Rating Logic */
+        /* Improved Mobile & Desktop Rating Logic */
         const ratingModal = document.getElementById('rating-modal');
         function showRating() {
-            // Show only if not rated or dismissed previously (using localStorage for persistence across sessions)
             if(!localStorage.getItem('utilitynest_rated')) {
                 ratingModal.style.display = 'flex';
             }
         }
+        
+        // ১. ডেস্কটপের জন্য (মাউস সরালে আসবে)
         document.addEventListener('mouseleave', (e) => { if(e.clientY < 0) showRating(); });
+        
+        // ২. মোবাইলের জন্য স্মার্ট টাইমার (ওয়েবসাইটে ঢোকার ১৫ সেকেন্ড পর অটোমেটিক আসবে)
+        setTimeout(showRating, 15000); 
+
+        // ৩. ট্যাব পরিবর্তন করলে
         document.addEventListener('visibilitychange', () => { if(document.hidden) showRating(); });
         
         const stars = document.querySelectorAll('.stars span');
         stars.forEach((star, index) => {
             star.addEventListener('click', function() {
-                // Highlight selected stars
                 stars.forEach((s, i) => {
                     if (i <= index) s.classList.add('active');
                     else s.classList.remove('active');
                 });
-                
-                // Set rated flag in localStorage so it doesn't show again
                 localStorage.setItem('utilitynest_rated', 'true');
-
-                // Wait 1 second showing the selected stars, then show thank you message
                 setTimeout(() => {
                     document.getElementById('rating-box').innerHTML = '<h3 style="color:var(--primary-color); font-size:1.8rem;">Thank You! ❤️</h3><p>Your feedback helps us improve.</p>';
-                    // Wait another 2 seconds before closing modal
                     setTimeout(() => ratingModal.style.display = 'none', 2000);
                 }, 1000);
             });
         });
         document.getElementById('close-rating').addEventListener('click', () => {
             ratingModal.style.display = 'none';
-            // Use localStorage so 'Maybe Later' is permanent (or change to sessionStorage if you want it to ask again next time they visit)
-            localStorage.setItem('utilitynest_rated', 'true'); 
+            localStorage.setItem('utilitynest_rated', 'true');
         });
 
         /* Image Resizer Logic */
