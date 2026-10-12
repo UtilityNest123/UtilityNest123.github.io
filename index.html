@@ -1,39 +1,30 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Advanced SEO Tags -->
     <title>Smart Image Resizer & Converter | UtilityNest</title>
-    <meta name="description" content="Resize, compress, and convert images to PDF, JPG, PNG online. Free image resizer tool by UtilityNest perfect for job applications, passports, and documents.">
-    <meta name="keywords" content="image resizer, image compressor, image to pdf, resize photo 300x300, 300x80 signature, UtilityNest, online image tool, convert jpg to pdf">
+    <meta name="description" content="Free online image resizer, compressor, and converter. Easily resize photos to 300x300 or 300x80 for job applications and convert JPG/PNG to PDF instantly.">
+    <meta name="keywords" content="image resizer, image compressor, image to pdf, resize photo 300x300, UtilityNest, convert jpg to pdf, free photo resizer">
     <meta name="author" content="UtilityNest">
     <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Smart Image Resizer & Converter | UtilityNest">
+    <meta property="og:description" content="Resize, compress, and convert images to PDF, JPG, PNG online instantly for free.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilitynest123.github.io/">
+    <link rel="icon" type="image/png" href="favicon.png">
 
-    <!-- Google Translate Widget CSS -->
     <style>
-        :root {
-            --bg-color: #121212;
-            --text-color: #ffffff;
-            --primary-color: #00ffcc;
-            --container-bg: #1e1e1e;
-            --border-color: #333;
-            --hover-color: #00ccaa;
-        }
-        [data-theme="light"] {
-            --bg-color: #f4f4f9;
-            --text-color: #333333;
-            --primary-color: #007bff;
-            --container-bg: #ffffff;
-            --border-color: #dddddd;
-            --hover-color: #0056b3;
-        }
+        :root { --bg-color: #121212; --text-color: #ffffff; --primary-color: #00ffcc; --container-bg: #1e1e1e; --border-color: #333; --hover-color: #00ccaa; }
+        [data-theme="light"] { --bg-color: #f4f4f9; --text-color: #333333; --primary-color: #007bff; --container-bg: #ffffff; --border-color: #dddddd; --hover-color: #0056b3; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background-color 0.3s, color 0.3s; }
         body { background-color: var(--bg-color); color: var(--text-color); display: flex; flex-direction: column; min-height: 100vh; }
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background-color: var(--container-bg); border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .logo { font-size: 24px; font-weight: bold; color: var(--primary-color); text-shadow: 0 0 10px rgba(0, 255, 204, 0.3); }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background-color: var(--container-bg); border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        
+        /* Updated Logo CSS */
+        .logo { display: flex; align-items: center; font-size: 24px; font-weight: bold; color: var(--primary-color); }
+        .logo img { height: 45px; margin-right: 12px; border-radius: 8px; }
+        
         .header-controls { display: flex; align-items: center; gap: 20px; }
         #google_translate_element select { padding: 8px; border-radius: 5px; border: 1px solid var(--border-color); background-color: var(--container-bg); color: var(--text-color); outline: none; }
         .theme-toggle { background: none; border: 2px solid var(--primary-color); color: var(--primary-color); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s; }
@@ -58,14 +49,39 @@
         .file-info-box { display: flex; justify-content: space-between; margin-top: 15px; font-size: 0.9rem; padding: 10px; background: rgba(0, 255, 204, 0.1); border-radius: 5px; border: 1px solid rgba(0, 255, 204, 0.3); }
         .download-link { display: inline-block; margin-top: 20px; padding: 15px 30px; background-color: #28a745; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; display: none; transition: background 0.3s; }
         .download-link:hover { background-color: #218838; }
+        
+        .seo-content { width: 100%; max-width: 800px; margin: 50px auto 20px; padding: 30px; background-color: var(--container-bg); border-radius: 15px; border: 1px solid var(--border-color); box-shadow: 0 5px 15px rgba(0,0,0,0.1); line-height: 1.6; }
+        .seo-content h2 { color: var(--primary-color); font-size: 1.8rem; margin-bottom: 15px; margin-top: 25px; }
+        .seo-content h2:first-child { margin-top: 0; }
+        .seo-content p { opacity: 0.85; margin-bottom: 15px; }
+        .seo-content ul { margin-left: 20px; margin-bottom: 15px; opacity: 0.85; }
+        .faq-item { margin-bottom: 20px; }
+        .faq-q { font-weight: bold; color: var(--primary-color); margin-bottom: 5px; }
+        .faq-a { opacity: 0.85; }
         footer { text-align: center; padding: 20px; background-color: var(--container-bg); border-top: 1px solid var(--border-color); font-size: 0.9rem; opacity: 0.7; }
+
+        /* Rating System CSS */
+        .rating-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center; }
+        .rating-content { background: var(--container-bg); padding: 40px; border-radius: 15px; text-align: center; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 400px; width: 90%; }
+        .rating-content h3 { color: var(--primary-color); font-size: 1.5rem; margin-bottom: 10px; }
+        .rating-content p { margin-bottom: 20px; opacity: 0.8; }
+        .stars { display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; }
+        .stars span { font-size: 40px; cursor: pointer; color: #555; transition: color 0.3s, transform 0.2s; }
+        .stars span:hover, .stars span.active { color: #ffaa00; transform: scale(1.1); }
+        .rating-btns { display: flex; justify-content: center; gap: 15px; }
+        .btn-close-rating { padding: 10px 20px; background: transparent; border: 1px solid var(--border-color); color: var(--text-color); border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .btn-close-rating:hover { background: var(--border-color); }
+
         @media (max-width: 600px) { .controls-grid { grid-template-columns: 1fr; } header { flex-direction: column; gap: 15px; } }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body data-theme="dark">
     <header>
-        <div class="logo">UtilityNest Image Tools</div>
+        <div class="logo">
+            <img src="logo.jpg" alt="UtilityNest Logo">
+            <span>UtilityNest Tools</span>
+        </div>
         <div class="header-controls">
             <div id="google_translate_element"></div>
             <button class="theme-toggle" id="theme-btn">☀️ Light Mode</button>
@@ -92,16 +108,16 @@
                         <option value="image/jpeg">JPG / JPEG</option>
                         <option value="image/png">PNG</option>
                         <option value="image/webp">WEBP</option>
-                        <option value="application/pdf">PDF Document (Perfect Fit)</option>
+                        <option value="application/pdf">PDF Document</option>
                     </select>
                 </div>
                 <div class="control-group" id="compression-group">
                     <label>File Size Reduction</label>
                     <select id="quality-select">
                         <option value="1.0">Original Quality (No Reduce)</option>
-                        <option value="0.8">Medium Reduce (Recommended)</option>
+                        <option value="0.8">Medium Reduce</option>
                         <option value="0.5">High Reduce</option>
-                        <option value="0.2">Super Reduce (For Job Applications)</option>
+                        <option value="0.2">Super Reduce</option>
                     </select>
                 </div>
                 <div class="control-group">
@@ -118,8 +134,6 @@
                         <option value="">Keep Original Size</option>
                         <option value="300x300">300 x 300 (Job Photo)</option>
                         <option value="300x80">300 x 80 (Job Signature)</option>
-                        <option value="1920x1080">1920 x 1080 (FHD)</option>
-                        <option value="1280x720">1280 x 720 (HD)</option>
                     </select>
                 </div>
             </div>
@@ -129,10 +143,42 @@
                 <p id="final-size-info" style="margin-top: 10px; color: var(--primary-color); font-weight: bold; display: none;"></p>
             </div>
         </div>
+
+        <section class="seo-content">
+            <h2>Ultimate Online Image Resizer & Converter</h2>
+            <p>Welcome to <strong>UtilityNest Image Tools</strong>, your one-stop solution for editing, resizing, and converting photos online instantly directly from your browser.</p>
+            <h2>How to Resize and Compress Images</h2>
+            <ul>
+                <li><strong>Step 1:</strong> Upload your photo (JPG, PNG, or WEBP).</li>
+                <li><strong>Step 2:</strong> Select your desired output format (JPG, PNG, or PDF).</li>
+                <li><strong>Step 3:</strong> Choose a preset dimension (like 300x300) or enter custom sizes.</li>
+                <li><strong>Step 4:</strong> Click "Process & Convert" and download your optimized image.</li>
+            </ul>
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div class="faq-item">
+                <div class="faq-q">Is my uploaded image safe and private?</div>
+                <div class="faq-a">Yes! Our Smart Image Resizer processes photos entirely inside your own device. Your files are never sent to our servers.</div>
+            </div>
+        </section>
     </main>
     <footer>
         &copy; 2026 | Powered by <strong>UtilityNest</strong> | All Rights Reserved.
     </footer>
+
+    <!-- Rating Modal -->
+    <div id="rating-modal" class="rating-modal">
+        <div class="rating-content" id="rating-box">
+            <h3>Enjoying UtilityNest?</h3>
+            <p>Please rate your experience before you leave!</p>
+            <div class="stars">
+                <span data-val="1">★</span><span data-val="2">★</span><span data-val="3">★</span><span data-val="4">★</span><span data-val="5">★</span>
+            </div>
+            <div class="rating-btns">
+                <button class="btn-close-rating" id="close-rating">Maybe Later</button>
+            </div>
+        </div>
+    </div>
+    
     <script type="text/javascript">
         function googleTranslateElementInit() { new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element'); }
     </script>
@@ -145,6 +191,33 @@
             else { body.setAttribute('data-theme', 'dark'); themeBtn.textContent = '☀️ Light Mode'; }
         });
 
+        /* Exit Intent Rating Logic */
+        const ratingModal = document.getElementById('rating-modal');
+        function showRating() {
+            if(!localStorage.getItem('utilitynest_rated') && !sessionStorage.getItem('rating_dismissed')) {
+                ratingModal.style.display = 'flex';
+            }
+        }
+        document.addEventListener('mouseleave', (e) => { if(e.clientY < 0) showRating(); });
+        document.addEventListener('visibilitychange', () => { if(document.hidden) showRating(); });
+        
+        document.querySelectorAll('.stars span').forEach(star => {
+            star.addEventListener('click', function() {
+                document.querySelectorAll('.stars span').forEach(s => s.classList.remove('active'));
+                this.classList.add('active');
+                setTimeout(() => {
+                    document.getElementById('rating-box').innerHTML = '<h3 style="color:var(--primary-color); font-size:1.8rem;">Thank You! ❤️</h3><p>Your feedback helps us improve.</p>';
+                    localStorage.setItem('utilitynest_rated', 'true');
+                    setTimeout(() => ratingModal.style.display = 'none', 2000);
+                }, 400);
+            });
+        });
+        document.getElementById('close-rating').addEventListener('click', () => {
+            ratingModal.style.display = 'none';
+            sessionStorage.setItem('rating_dismissed', 'true');
+        });
+
+        /* Image Resizer Logic */
         const fileInput = document.getElementById('file-input');
         const imagePreview = document.getElementById('image-preview');
         const previewContainer = document.getElementById('preview-container');
