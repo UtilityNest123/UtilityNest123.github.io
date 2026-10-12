@@ -12,6 +12,7 @@
     <meta property="og:description" content="Resize, compress, and convert images to PDF, JPG, PNG online instantly for free.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilitynest123.github.io/">
+    <!-- Favicon PNG -->
     <link rel="icon" type="image/png" href="favicon.png">
 
     <style>
@@ -21,8 +22,8 @@
         body { background-color: var(--bg-color); color: var(--text-color); display: flex; flex-direction: column; min-height: 100vh; }
         header { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background-color: var(--container-bg); border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         
-        /* Updated Logo CSS */
         .logo { display: flex; align-items: center; font-size: 24px; font-weight: bold; color: var(--primary-color); }
+        /* Logo JPG */
         .logo img { height: 45px; margin-right: 12px; border-radius: 8px; }
         
         .header-controls { display: flex; align-items: center; gap: 20px; }
@@ -79,6 +80,7 @@
 <body data-theme="dark">
     <header>
         <div class="logo">
+            <!-- Ensure your JPG logo is named logo.jpg -->
             <img src="logo.jpg" alt="UtilityNest Logo">
             <span>UtilityNest Tools</span>
         </div>
@@ -170,7 +172,7 @@
         <div class="rating-content" id="rating-box">
             <h3>Enjoying UtilityNest?</h3>
             <p>Please rate your experience before you leave!</p>
-            <div class="stars">
+            <div class="stars" id="star-container">
                 <span data-val="1">★</span><span data-val="2">★</span><span data-val="3">★</span><span data-val="4">★</span><span data-val="5">★</span>
             </div>
             <div class="rating-btns">
@@ -191,30 +193,41 @@
             else { body.setAttribute('data-theme', 'dark'); themeBtn.textContent = '☀️ Light Mode'; }
         });
 
-        /* Exit Intent Rating Logic */
+        /* Improved Exit Intent Rating Logic */
         const ratingModal = document.getElementById('rating-modal');
         function showRating() {
-            if(!localStorage.getItem('utilitynest_rated') && !sessionStorage.getItem('rating_dismissed')) {
+            // Show only if not rated or dismissed previously (using localStorage for persistence across sessions)
+            if(!localStorage.getItem('utilitynest_rated')) {
                 ratingModal.style.display = 'flex';
             }
         }
         document.addEventListener('mouseleave', (e) => { if(e.clientY < 0) showRating(); });
         document.addEventListener('visibilitychange', () => { if(document.hidden) showRating(); });
         
-        document.querySelectorAll('.stars span').forEach(star => {
+        const stars = document.querySelectorAll('.stars span');
+        stars.forEach((star, index) => {
             star.addEventListener('click', function() {
-                document.querySelectorAll('.stars span').forEach(s => s.classList.remove('active'));
-                this.classList.add('active');
+                // Highlight selected stars
+                stars.forEach((s, i) => {
+                    if (i <= index) s.classList.add('active');
+                    else s.classList.remove('active');
+                });
+                
+                // Set rated flag in localStorage so it doesn't show again
+                localStorage.setItem('utilitynest_rated', 'true');
+
+                // Wait 1 second showing the selected stars, then show thank you message
                 setTimeout(() => {
                     document.getElementById('rating-box').innerHTML = '<h3 style="color:var(--primary-color); font-size:1.8rem;">Thank You! ❤️</h3><p>Your feedback helps us improve.</p>';
-                    localStorage.setItem('utilitynest_rated', 'true');
+                    // Wait another 2 seconds before closing modal
                     setTimeout(() => ratingModal.style.display = 'none', 2000);
-                }, 400);
+                }, 1000);
             });
         });
         document.getElementById('close-rating').addEventListener('click', () => {
             ratingModal.style.display = 'none';
-            sessionStorage.setItem('rating_dismissed', 'true');
+            // Use localStorage so 'Maybe Later' is permanent (or change to sessionStorage if you want it to ask again next time they visit)
+            localStorage.setItem('utilitynest_rated', 'true'); 
         });
 
         /* Image Resizer Logic */
