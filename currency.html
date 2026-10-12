@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Advanced SEO Tags -->
+    <title>Live Currency Converter | UtilityNest</title>
+    <meta name="description" content="Real-time global currency converter. Check live exchange rates for USD to BDT, EUR, GBP, and more instantly with UtilityNest.">
+    <meta name="keywords" content="currency converter, live exchange rate, usd to bdt, UtilityNest, forex calculator, real-time currency, online converter">
+    <meta name="author" content="UtilityNest">
+    <meta name="robots" content="index, follow">
+
+    <style>
+        :root { --bg-color: #121212; --text-color: #ffffff; --primary-color: #ffaa00; --container-bg: #1e1e1e; --border-color: #333; --hover-color: #e69900; }
+        [data-theme="light"] { --bg-color: #f8f9fa; --text-color: #212529; --primary-color: #d35400; --container-bg: #ffffff; --border-color: #dee2e6; --hover-color: #a84300; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background-color 0.3s, color 0.3s; }
+        body { background-color: var(--bg-color); color: var(--text-color); display: flex; flex-direction: column; min-height: 100vh; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background-color: var(--container-bg); border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .logo { font-size: 24px; font-weight: bold; color: var(--primary-color); text-shadow: 0 0 10px rgba(255, 170, 0, 0.3); display: flex; align-items: center; gap: 10px; }
+        .header-controls { display: flex; align-items: center; gap: 20px; }
+        #google_translate_element select { padding: 8px; border-radius: 5px; border: 1px solid var(--border-color); background-color: var(--container-bg); color: var(--text-color); outline: none; }
+        .theme-toggle { background: none; border: 2px solid var(--primary-color); color: var(--primary-color); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s; }
+        .theme-toggle:hover { background-color: var(--primary-color); color: var(--bg-color); }
+        main { flex: 1; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
+        h1 { margin-bottom: 10px; text-align: center; font-size: 2.5rem; color: var(--primary-color); }
+        .subtitle { margin-bottom: 30px; text-align: center; opacity: 0.8; }
+        .converter-container { background-color: var(--container-bg); padding: 40px; border-radius: 15px; width: 100%; max-width: 500px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); border: 1px solid var(--border-color); }
+        .input-group { margin-bottom: 25px; }
+        .input-group label { display: block; margin-bottom: 8px; font-weight: bold; opacity: 0.9; }
+        .currency-input-wrapper { display: flex; gap: 10px; }
+        input[type="number"], select { padding: 15px; border-radius: 8px; border: 1px solid var(--border-color); background-color: var(--bg-color); color: var(--text-color); font-size: 1.1rem; outline: none; }
+        input[type="number"] { flex: 2; } select { flex: 1; font-weight: bold; cursor: pointer; }
+        input[type="number"]:focus, select:focus { border-color: var(--primary-color); }
+        .swap-btn { background-color: transparent; border: 2px solid var(--border-color); color: var(--text-color); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px auto; cursor: pointer; font-size: 1.2rem; transition: all 0.3s; }
+        .swap-btn:hover { border-color: var(--primary-color); color: var(--primary-color); transform: rotate(180deg); }
+        .result-box { background-color: var(--bg-color); padding: 20px; border-radius: 10px; text-align: center; border: 1px solid var(--border-color); }
+        .result-text { font-size: 2rem; font-weight: bold; color: var(--primary-color); word-break: break-all; }
+        .rate-info { margin-top: 10px; font-size: 0.9rem; opacity: 0.7; }
+        .loading { text-align: center; margin-top: 10px; font-size: 0.9rem; color: var(--primary-color); display: none; }
+        footer { text-align: center; padding: 20px; background-color: var(--container-bg); border-top: 1px solid var(--border-color); font-size: 0.9rem; opacity: 0.7; }
+        @media (max-width: 600px) { header { flex-direction: column; gap: 15px; } }
+    </style>
+</head>
+<body data-theme="dark">
+    <header>
+        <div class="logo">💱 UtilityNest Currency</div>
+        <div class="header-controls">
+            <div id="google_translate_element"></div>
+            <button class="theme-toggle" id="theme-btn">☀️ Light Mode</button>
+        </div>
+    </header>
+    <main>
+        <h1>Live Currency Rates</h1>
+        <p class="subtitle">Fast, accurate, and real-time conversions.</p>
+        <div class="converter-container">
+            <div class="input-group">
+                <label>Amount (From)</label>
+                <div class="currency-input-wrapper">
+                    <input type="number" id="amount-input" value="1" min="0" step="any">
+                    <select id="from-currency"></select>
+                </div>
+            </div>
+            <button class="swap-btn" id="swap-btn">⇅</button>
+            <div class="input-group">
+                <label>Converted Amount (To)</label>
+                <div class="currency-input-wrapper">
+                    <input type="number" id="result-input" readonly>
+                    <select id="to-currency"></select>
+                </div>
+            </div>
+            <p class="loading" id="loading-indicator">Fetching latest rates...</p>
+            <div class="result-box">
+                <div class="result-text" id="display-result">0.00</div>
+                <div class="rate-info" id="rate-info">1 USD = 110 BDT</div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        &copy; 2026 | Powered by <strong>UtilityNest</strong> | All Rights Reserved.
+    </footer>
+    <script type="text/javascript">
+        function googleTranslateElementInit() { new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element'); }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+        const themeBtn = document.getElementById('theme-btn');
+        const body = document.body;
+        themeBtn.addEventListener('click', () => {
+            if (body.getAttribute('data-theme') === 'dark') { body.setAttribute('data-theme', 'light'); themeBtn.textContent = '🌙 Dark Mode'; } 
+            else { body.setAttribute('data-theme', 'dark'); themeBtn.textContent = '☀️ Light Mode'; }
+        });
+
+        const fromCurrency = document.getElementById('from-currency'); const toCurrency = document.getElementById('to-currency');
+        const amountInput = document.getElementById('amount-input'); const resultInput = document.getElementById('result-input');
+        const displayResult = document.getElementById('display-result'); const rateInfo = document.getElementById('rate-info');
+        const swapBtn = document.getElementById('swap-btn'); const loadingIndicator = document.getElementById('loading-indicator');
+        const API_URL = "https://open.er-api.com/v6/latest/USD"; let exchangeRates = {};
+
+        const popularCurrencies = { "USD": "US Dollar", "BDT": "Bangladeshi Taka", "EUR": "Euro", "GBP": "British Pound", "INR": "Indian Rupee", "SAR": "Saudi Riyal", "AED": "UAE Dirham", "MYR": "Malaysian Ringgit", "SGD": "Singapore Dollar", "CAD": "Canadian Dollar", "AUD": "Australian Dollar", "JPY": "Japanese Yen" };
+
+        async function init() {
+            loadingIndicator.style.display = 'block';
+            try { const response = await fetch(API_URL); const data = await response.json(); exchangeRates = data.rates; populateSelects(); calculate(); } 
+            catch (error) { rateInfo.textContent = "Error fetching rates. Check your internet connection."; } 
+            finally { loadingIndicator.style.display = 'none'; }
+        }
+
+        function populateSelects() {
+            let optionsHTML = '';
+            for (let code in popularCurrencies) { if(exchangeRates[code]) optionsHTML += `<option value="${code}">${code} - ${popularCurrencies[code]}</option>`; }
+            optionsHTML += `<option disabled>───────</option>`;
+            for (let code in exchangeRates) { if (!popularCurrencies[code]) optionsHTML += `<option value="${code}">${code}</option>`; }
+            fromCurrency.innerHTML = optionsHTML; toCurrency.innerHTML = optionsHTML;
+            fromCurrency.value = "USD"; toCurrency.value = "BDT";
+        }
+
+        function calculate() {
+            const amount = parseFloat(amountInput.value);
+            if (isNaN(amount) || amount < 0) { resultInput.value = ""; displayResult.textContent = "0.00"; return; }
+            const fromRate = exchangeRates[fromCurrency.value]; const toRate = exchangeRates[toCurrency.value];
+            if (fromRate && toRate) {
+                const convertedAmount = (amount / fromRate) * toRate;
+                resultInput.value = convertedAmount.toFixed(2);
+                displayResult.textContent = `${convertedAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} ${toCurrency.value}`;
+                const singleUnitRate = (1 / fromRate) * toRate;
+                rateInfo.textContent = `1 ${fromCurrency.value} = ${singleUnitRate.toFixed(4)} ${toCurrency.value}`;
+            }
+        }
+
+        amountInput.addEventListener('input', calculate); fromCurrency.addEventListener('change', calculate); toCurrency.addEventListener('change', calculate);
+        swapBtn.addEventListener('click', () => { const temp = fromCurrency.value; fromCurrency.value = toCurrency.value; toCurrency.value = temp; calculate(); });
+        init();
+    </script>
+</body>
+</html>
