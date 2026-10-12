@@ -3,33 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Advanced SEO Tags -->
     <title>Stylish Font & Bio Generator Pro | UtilityNest</title>
     <meta name="description" content="Generate cool, stylish fonts, zalgo text, and VIP emojis for Instagram, TikTok, and Facebook bio. Free social media fancy text maker by UtilityNest.">
-    <meta name="keywords" content="stylish font generator, instagram bio font, zalgo text maker, VIP text emojis, UtilityNest, text repeater, fancy text generator, cool fonts, copy paste fonts">
+    <meta name="keywords" content="stylish font generator, instagram bio font, zalgo text maker, VIP text emojis, UtilityNest, fancy text generator">
     <meta name="author" content="UtilityNest">
     <meta name="robots" content="index, follow">
-
-    <!-- Open Graph for Social Media -->
     <meta property="og:title" content="Stylish Font & Bio Generator | UtilityNest">
-    <meta property="og:description" content="Generate cool fonts and VIP emojis for your social media bios instantly.">
-    <meta property="og:type" content="website">
-
-    <!-- Favicon -->
+    <!-- Favicon PNG -->
     <link rel="icon" type="image/png" href="favicon.png">
-
-    <!-- JSON-LD Schema Markup -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "UtilityNest Stylish Font Generator",
-      "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "All",
-      "description": "Generate stylish fonts and fancy text for Instagram and Facebook bios."
-    }
-    </script>
 
     <style>
         :root { --bg-color: #0f172a; --text-color: #f8fafc; --primary-color: #38bdf8; --container-bg: #1e293b; --border-color: #334155; --hover-color: #0284c7; --toast-bg: #10b981; }
@@ -37,7 +18,11 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
         body { background-color: var(--bg-color); color: var(--text-color); display: flex; flex-direction: column; min-height: 100vh; }
         header { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background-color: var(--container-bg); border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .logo { font-size: 22px; font-weight: bold; color: var(--primary-color); display: flex; align-items: center; gap: 10px; }
+        
+        .logo { display: flex; align-items: center; font-size: 22px; font-weight: bold; color: var(--primary-color); }
+        /* Logo JPG */
+        .logo img { height: 45px; margin-right: 12px; border-radius: 8px; }
+        
         .header-controls { display: flex; align-items: center; gap: 15px; }
         #google_translate_element select { padding: 8px; border-radius: 5px; border: 1px solid var(--border-color); background-color: var(--container-bg); color: var(--text-color); outline: none; }
         .theme-toggle { background: none; border: 2px solid var(--primary-color); color: var(--primary-color); padding: 6px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s; }
@@ -67,7 +52,6 @@
         #toast { visibility: hidden; min-width: 250px; background-color: var(--toast-bg); color: #fff; text-align: center; border-radius: 8px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.3s, visibility 0.3s, bottom 0.3s; }
         #toast.show { visibility: visible; opacity: 1; bottom: 50px; }
         
-        /* SEO Section CSS */
         .seo-content { width: 100%; max-width: 800px; margin: 50px auto 20px; padding: 30px; background-color: var(--container-bg); border-radius: 15px; border: 1px solid var(--border-color); box-shadow: 0 5px 15px rgba(0,0,0,0.1); line-height: 1.6; }
         .seo-content h2 { color: var(--primary-color); font-size: 1.8rem; margin-bottom: 15px; margin-top: 25px; }
         .seo-content h2:first-child { margin-top: 0; }
@@ -76,14 +60,30 @@
         .faq-item { margin-bottom: 20px; }
         .faq-q { font-weight: bold; color: var(--primary-color); margin-bottom: 5px; }
         .faq-a { opacity: 0.85; }
-
         footer { text-align: center; padding: 20px; background-color: var(--container-bg); border-top: 1px solid var(--border-color); font-size: 0.9rem; opacity: 0.7; margin-top: auto; }
+        
+        /* Rating System CSS */
+        .rating-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center; }
+        .rating-content { background: var(--container-bg); padding: 40px; border-radius: 15px; text-align: center; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 400px; width: 90%; }
+        .rating-content h3 { color: var(--primary-color); font-size: 1.5rem; margin-bottom: 10px; }
+        .rating-content p { margin-bottom: 20px; opacity: 0.8; }
+        .stars { display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; }
+        .stars span { font-size: 40px; cursor: pointer; color: #555; transition: color 0.3s, transform 0.2s; }
+        .stars span:hover, .stars span.active { color: #ffaa00; transform: scale(1.1); }
+        .rating-btns { display: flex; justify-content: center; gap: 15px; }
+        .btn-close-rating { padding: 10px 20px; background: transparent; border: 1px solid var(--border-color); color: var(--text-color); border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .btn-close-rating:hover { background: var(--border-color); }
+
         @media (max-width: 600px) { header { flex-direction: column; gap: 15px; } .font-card { flex-direction: column; align-items: stretch; gap: 15px; } .copy-btn { width: 100%; } .tool-ext input { margin-bottom: 10px; width: 100%; } }
     </style>
 </head>
 <body data-theme="dark">
     <header>
-        <div class="logo">✨ UtilityNest Fonts</div>
+        <div class="logo">
+            <!-- Ensure your JPG logo is named logo.jpg -->
+            <img src="logo.jpg" alt="UtilityNest Logo">
+            <span>UtilityNest Fonts</span>
+        </div>
         <div class="header-controls">
             <div id="google_translate_element"></div>
             <button class="theme-toggle" id="theme-btn">☀️ Light Mode</button>
@@ -91,7 +91,7 @@
     </header>
     <main>
         <h1>Ultimate Social Text Generator</h1>
-        <p class="subtitle">Type below to generate stylish fonts, count words, repeat text, or add VIP emojis for Facebook, Instagram, and TikTok bios!</p>
+        <p class="subtitle">Type below to generate stylish fonts, count words, repeat text, or add VIP emojis for bios!</p>
         <div class="main-container">
             <div class="input-section">
                 <textarea id="text-input" placeholder="Type your text here..." spellcheck="false"></textarea>
@@ -107,7 +107,6 @@
                     <label style="display:block; margin-bottom:8px; font-weight:bold;">Repeat Text</label>
                     <input type="number" id="repeat-count" placeholder="Times (e.g. 50)" min="1" max="1000">
                     <button onclick="applyRepeater()">Generate & Copy</button>
-                    <p style="font-size:0.8rem; margin-top:5px; opacity:0.7;">Writes your text multiple times.</p>
                 </div>
                 <div id="decorator-ext" class="tool-ext">
                     <label style="display:block; margin-bottom:8px; font-weight:bold;">Add Decoration</label>
@@ -116,50 +115,43 @@
                         <option value="【{text}】">【 Gamer 】</option>
                         <option value="★彡[{text}]彡★">★彡 Stars 彡★</option>
                         <option value="♥♡ {text} ♡♥">♥♡ Cute ♡♥</option>
-                        <option value="ılı.lıllılı.ıllı. {text} .ılı.lıllılı.ıllı">ılı. Music .ıllı</option>
                     </select>
                     <button onclick="applyDecorator()">Add to Text</button>
                 </div>
             </div>
             <div class="results-container" id="results"></div>
             
-            <!-- SEO Text Content Section -->
             <section class="seo-content">
-                <h2>Free Stylish Font & Bio Generator</h2>
-                <p>Looking to make your Instagram, TikTok, Facebook, or WhatsApp profile stand out? The <strong>UtilityNest Font Generator</strong> is the ultimate tool to instantly transform normal text into fancy, aesthetic, and cool looking fonts. Stand out from the crowd with unique text styles and VIP emojis!</p>
-                
+                <h2>Free Stylish Font Generator</h2>
+                <p>Looking to make your Instagram, TikTok, or Facebook profile stand out? Transform normal text into fancy, aesthetic, and cool looking fonts instantly.</p>
                 <h2>How to Generate Cool Fonts</h2>
                 <ul>
                     <li><strong>Step 1:</strong> Type or paste your normal text into the text box above.</li>
-                    <li><strong>Step 2:</strong> Scroll down to see your text magically converted into dozens of different stylish fonts (like Bold, Italic, Gothic, Zalgo, and more).</li>
-                    <li><strong>Step 3:</strong> Click the "Copy" button next to your favorite font style.</li>
-                    <li><strong>Step 4:</strong> Paste it into your social media bio, captions, or messages.</li>
+                    <li><strong>Step 2:</strong> Scroll down to see your text magically converted into dozens of different stylish fonts.</li>
+                    <li><strong>Step 3:</strong> Click "Copy" next to your favorite font and paste it anywhere.</li>
                 </ul>
-
-                <h2>Extra Features Included</h2>
-                <ul>
-                    <li><strong>Text Repeater:</strong> Want to send 100 "I Love You" messages? Use our built-in text repeater to multiply your text instantly.</li>
-                    <li><strong>VIP Emoji Decorator:</strong> Add gaming borders, cute stars, or VIP aesthetic wings to your name with a single click.</li>
-                    <li><strong>Real-Time Word Count:</strong> Keep track of your character and word count to ensure your text fits perfectly within social media limits.</li>
-                </ul>
-
-                <h2>Frequently Asked Questions (FAQ)</h2>
-                <div class="faq-item">
-                    <div class="faq-q">Will these fonts work on Instagram and TikTok?</div>
-                    <div class="faq-a">Yes! Our tool uses standard Unicode characters, meaning the generated fonts are fully supported by Instagram, TikTok, Facebook, Twitter, and WhatsApp.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q">What is Zalgo text?</div>
-                    <div class="faq-a">Zalgo text is a "glitchy" or "creepy" looking font style that adds random symbols above and below your letters. It’s very popular for gaming profiles and memes.</div>
-                </div>
             </section>
-
         </div>
     </main>
     <div id="toast">Copied to clipboard! ✓</div>
     <footer>
         &copy; 2026 | Powered by <strong>UtilityNest</strong> | All Rights Reserved.
     </footer>
+
+    <!-- Rating Modal -->
+    <div id="rating-modal" class="rating-modal">
+        <div class="rating-content" id="rating-box">
+            <h3>Enjoying UtilityNest?</h3>
+            <p>Please rate your experience before you leave!</p>
+            <div class="stars">
+                <span data-val="1">★</span><span data-val="2">★</span><span data-val="3">★</span><span data-val="4">★</span><span data-val="5">★</span>
+            </div>
+            <div class="rating-btns">
+                <button class="btn-close-rating" id="close-rating">Maybe Later</button>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript">
         function googleTranslateElementInit() { new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element'); }
     </script>
@@ -172,6 +164,36 @@
             else { body.setAttribute('data-theme', 'dark'); themeBtn.textContent = '☀️ Light Mode'; }
         });
 
+        /* Improved Exit Intent Rating Logic */
+        const ratingModal = document.getElementById('rating-modal');
+        function showRating() {
+            if(!localStorage.getItem('utilitynest_rated')) {
+                ratingModal.style.display = 'flex';
+            }
+        }
+        document.addEventListener('mouseleave', (e) => { if(e.clientY < 0) showRating(); });
+        document.addEventListener('visibilitychange', () => { if(document.hidden) showRating(); });
+        
+        const stars = document.querySelectorAll('.stars span');
+        stars.forEach((star, index) => {
+            star.addEventListener('click', function() {
+                stars.forEach((s, i) => {
+                    if (i <= index) s.classList.add('active');
+                    else s.classList.remove('active');
+                });
+                localStorage.setItem('utilitynest_rated', 'true');
+                setTimeout(() => {
+                    document.getElementById('rating-box').innerHTML = '<h3 style="color:var(--primary-color); font-size:1.8rem;">Thank You! ❤️</h3><p>Your feedback helps us improve.</p>';
+                    setTimeout(() => ratingModal.style.display = 'none', 2000);
+                }, 1000);
+            });
+        });
+        document.getElementById('close-rating').addEventListener('click', () => {
+            ratingModal.style.display = 'none';
+            localStorage.setItem('utilitynest_rated', 'true');
+        });
+
+        /* Font Generator Logic */
         const fontStyles = [
             { name: "Bold Serif", chars: "𝐚𝐛𝐜𝐝𝐞𝐟𝐠𝐡𝐢𝐣𝐤𝐥𝐦𝐧𝐨𝐩𝐪𝐫𝐬𝐭𝐮𝐯𝐰𝐱𝐲𝐳𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟗𝟖𝟗" },
             { name: "Italic Serif", chars: "𝑎𝑏𝑐𝑑𝑒𝑓𝑔ℎ𝑖𝑗𝑘𝑙𝑚𝑛𝑜𝑝𝑞𝑟𝑠𝑡𝑢𝑣𝑤𝑥𝑦𝑧𝐴𝐵𝐶𝐷𝐸𝐹𝐺𝐻𝐼𝐽𝐾𝐿𝑀𝑁𝑂𝑃𝑄𝑅𝑆𝑇𝑈𝑉𝑊𝑋𝑌𝑍0123456789" },
@@ -181,8 +203,6 @@
             { name: "Gothic", chars: "𝔞𝔟𝔠𝔡𝔢𝔣𝔤𝔥𝔦𝔧𝔨𝔩𝔪𝔫𝔬𝔭𝔮𝔯𝔰𝔱𝔲𝔳𝔴𝔵𝔶𝔷𝔄𝔅ℭ𝔇𝔈𝔉𝔊ℌℑ𝔍𝔎𝔏𝔐𝔑𝔒𝔓𝔔ℜ𝔖𝔗𝔘𝔙𝔚𝔛𝔜ℨ0123456789" },
             { name: "Double Struck", chars: "𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤ𝟘𝟙𝟚𝟛𝟟𝟝𝟞𝟟𝟠𝟡" },
             { name: "Circled", chars: "ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏ⓪①②③④⑤⑥⑦⑧⑨" },
-            { name: "Dark Circled", chars: "🅐𝅓🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩⓿❶❷❸❹❺❻❼❽❾" },
-            { name: "Squared", chars: "ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ０１２３４５６７８９" },
             { name: "Upside Down", chars: "ɐqɔpǝɟƃɥıɾʞlɯuodbɹsʇnʌʍxʎz∀ꓭƆᗡƎℲ⅁HIſꓘꓶWNOԀꓨᖉSꓕꓵᴧMX⅄Z0123456789", special: "reverse" },
             { name: "Zalgo (Glitch)", special: "zalgo" }
         ];
