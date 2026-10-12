@@ -9,7 +9,6 @@
     <meta name="author" content="UtilityNest">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Live Currency Converter | UtilityNest">
-    <!-- Favicon PNG -->
     <link rel="icon" type="image/png" href="favicon.png">
 
     <style>
@@ -20,7 +19,6 @@
         header { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background-color: var(--container-bg); border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         
         .logo { display: flex; align-items: center; font-size: 24px; font-weight: bold; color: var(--primary-color); }
-        /* Logo JPG */
         .logo img { height: 45px; margin-right: 12px; border-radius: 8px; }
         
         .header-controls { display: flex; align-items: center; gap: 20px; }
@@ -72,7 +70,6 @@
 <body data-theme="dark">
     <header>
         <div class="logo">
-            <!-- Ensure your JPG logo is named logo.jpg -->
             <img src="logo.jpg" alt="UtilityNest Logo">
             <span>UtilityNest Currency</span>
         </div>
@@ -122,7 +119,6 @@
         &copy; 2026 | Powered by <strong>UtilityNest</strong> | All Rights Reserved.
     </footer>
 
-    <!-- Rating Modal -->
     <div id="rating-modal" class="rating-modal">
         <div class="rating-content" id="rating-box">
             <h3>Enjoying UtilityNest?</h3>
@@ -139,7 +135,8 @@
     <script type="text/javascript">
         function googleTranslateElementInit() { new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element'); }
     </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- &hl=en added below to force English UI -->
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit&hl=en"></script>
     <script>
         const themeBtn = document.getElementById('theme-btn');
         const body = document.body;
@@ -148,7 +145,6 @@
             else { body.setAttribute('data-theme', 'dark'); themeBtn.textContent = '☀️ Light Mode'; }
         });
 
-        /* Improved Mobile & Desktop Rating Logic */
         const ratingModal = document.getElementById('rating-modal');
         function showRating() {
             if(!localStorage.getItem('utilitynest_rated')) {
@@ -156,13 +152,8 @@
             }
         }
         
-        // ১. ডেস্কটপের জন্য (মাউস সরালে আসবে)
         document.addEventListener('mouseleave', (e) => { if(e.clientY < 0) showRating(); });
-        
-        // ২. মোবাইলের জন্য স্মার্ট টাইমার (ওয়েবসাইটে ঢোকার ১৫ সেকেন্ড পর অটোমেটিক আসবে)
         setTimeout(showRating, 15000); 
-
-        // ৩. ট্যাব পরিবর্তন করলে
         document.addEventListener('visibilitychange', () => { if(document.hidden) showRating(); });
         
         const stars = document.querySelectorAll('.stars span');
@@ -184,7 +175,6 @@
             localStorage.setItem('utilitynest_rated', 'true');
         });
 
-        /* Currency Converter Logic */
         const fromCurrency = document.getElementById('from-currency'); const toCurrency = document.getElementById('to-currency');
         const amountInput = document.getElementById('amount-input'); const resultInput = document.getElementById('result-input');
         const displayResult = document.getElementById('display-result'); const rateInfo = document.getElementById('rate-info');
