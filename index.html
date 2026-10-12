@@ -12,7 +12,6 @@
     <meta property="og:description" content="Resize, compress, and convert images to PDF, JPG, PNG online instantly for free.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilitynest123.github.io/">
-    <!-- Favicon PNG -->
     <link rel="icon" type="image/png" href="favicon.png">
 
     <style>
@@ -23,7 +22,6 @@
         header { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background-color: var(--container-bg); border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         
         .logo { display: flex; align-items: center; font-size: 24px; font-weight: bold; color: var(--primary-color); }
-        /* Logo JPG */
         .logo img { height: 45px; margin-right: 12px; border-radius: 8px; }
         
         .header-controls { display: flex; align-items: center; gap: 20px; }
@@ -80,7 +78,6 @@
 <body data-theme="dark">
     <header>
         <div class="logo">
-            <!-- Ensure your JPG logo is named logo.jpg -->
             <img src="logo.jpg" alt="UtilityNest Logo">
             <span>UtilityNest Tools</span>
         </div>
@@ -156,18 +153,12 @@
                 <li><strong>Step 3:</strong> Choose a preset dimension (like 300x300) or enter custom sizes.</li>
                 <li><strong>Step 4:</strong> Click "Process & Convert" and download your optimized image.</li>
             </ul>
-            <h2>Frequently Asked Questions (FAQ)</h2>
-            <div class="faq-item">
-                <div class="faq-q">Is my uploaded image safe and private?</div>
-                <div class="faq-a">Yes! Our Smart Image Resizer processes photos entirely inside your own device. Your files are never sent to our servers.</div>
-            </div>
         </section>
     </main>
     <footer>
         &copy; 2026 | Powered by <strong>UtilityNest</strong> | All Rights Reserved.
     </footer>
 
-    <!-- Rating Modal -->
     <div id="rating-modal" class="rating-modal">
         <div class="rating-content" id="rating-box">
             <h3>Enjoying UtilityNest?</h3>
@@ -184,7 +175,8 @@
     <script type="text/javascript">
         function googleTranslateElementInit() { new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element'); }
     </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- &hl=en added below to force English UI -->
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit&hl=en"></script>
     <script>
         const themeBtn = document.getElementById('theme-btn');
         const body = document.body;
@@ -193,7 +185,6 @@
             else { body.setAttribute('data-theme', 'dark'); themeBtn.textContent = '☀️ Light Mode'; }
         });
 
-        /* Improved Mobile & Desktop Rating Logic */
         const ratingModal = document.getElementById('rating-modal');
         function showRating() {
             if(!localStorage.getItem('utilitynest_rated')) {
@@ -201,13 +192,8 @@
             }
         }
         
-        // ১. ডেস্কটপের জন্য (মাউস সরালে আসবে)
         document.addEventListener('mouseleave', (e) => { if(e.clientY < 0) showRating(); });
-        
-        // ২. মোবাইলের জন্য স্মার্ট টাইমার (ওয়েবসাইটে ঢোকার ১৫ সেকেন্ড পর অটোমেটিক আসবে)
         setTimeout(showRating, 15000); 
-
-        // ৩. ট্যাব পরিবর্তন করলে
         document.addEventListener('visibilitychange', () => { if(document.hidden) showRating(); });
         
         const stars = document.querySelectorAll('.stars span');
@@ -229,7 +215,6 @@
             localStorage.setItem('utilitynest_rated', 'true');
         });
 
-        /* Image Resizer Logic */
         const fileInput = document.getElementById('file-input');
         const imagePreview = document.getElementById('image-preview');
         const previewContainer = document.getElementById('preview-container');
@@ -251,12 +236,10 @@
             if(e.target.value === 'image/png' || e.target.value === 'application/pdf') { compressionGroup.style.opacity = '0.5'; } 
             else { compressionGroup.style.opacity = '1'; }
         });
-
         presetSelect.addEventListener('change', (e) => {
             if(e.target.value) { const [w, h] = e.target.value.split('x'); customWidth.value = w; customHeight.value = h; } 
             else { customWidth.value = ''; customHeight.value = ''; }
         });
-
         fileInput.addEventListener('change', (e) => {
             const file = e.target.files[0]; if (!file) return;
             originalFileName = file.name.split('.')[0]; origFileSize = (file.size / 1024).toFixed(2);
