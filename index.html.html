@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Advanced SEO Tags -->
+    <title>Smart Image Resizer & Converter | UtilityNest</title>
+    <meta name="description" content="Resize, compress, and convert images to PDF, JPG, PNG online. Free image resizer tool by UtilityNest perfect for job applications, passports, and documents.">
+    <meta name="keywords" content="image resizer, image compressor, image to pdf, resize photo 300x300, 300x80 signature, UtilityNest, online image tool, convert jpg to pdf">
+    <meta name="author" content="UtilityNest">
+    <meta name="robots" content="index, follow">
+
+    <!-- Google Translate Widget CSS -->
+    <style>
+        :root {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --primary-color: #00ffcc;
+            --container-bg: #1e1e1e;
+            --border-color: #333;
+            --hover-color: #00ccaa;
+        }
+        [data-theme="light"] {
+            --bg-color: #f4f4f9;
+            --text-color: #333333;
+            --primary-color: #007bff;
+            --container-bg: #ffffff;
+            --border-color: #dddddd;
+            --hover-color: #0056b3;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background-color 0.3s, color 0.3s; }
+        body { background-color: var(--bg-color); color: var(--text-color); display: flex; flex-direction: column; min-height: 100vh; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background-color: var(--container-bg); border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .logo { font-size: 24px; font-weight: bold; color: var(--primary-color); text-shadow: 0 0 10px rgba(0, 255, 204, 0.3); }
+        .header-controls { display: flex; align-items: center; gap: 20px; }
+        #google_translate_element select { padding: 8px; border-radius: 5px; border: 1px solid var(--border-color); background-color: var(--container-bg); color: var(--text-color); outline: none; }
+        .theme-toggle { background: none; border: 2px solid var(--primary-color); color: var(--primary-color); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s; }
+        .theme-toggle:hover { background-color: var(--primary-color); color: var(--bg-color); }
+        main { flex: 1; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
+        h1 { margin-bottom: 30px; text-align: center; font-size: 2.5rem; background: linear-gradient(45deg, var(--primary-color), #bc13fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .tool-container { background-color: var(--container-bg); padding: 30px; border-radius: 15px; width: 100%; max-width: 650px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); border: 1px solid var(--border-color); }
+        .upload-area { border: 2px dashed var(--primary-color); border-radius: 10px; padding: 40px; text-align: center; cursor: pointer; margin-bottom: 20px; position: relative; transition: background-color 0.3s; }
+        .upload-area:hover { background-color: rgba(0, 255, 204, 0.05); }
+        .upload-area p { font-size: 1.1rem; color: var(--text-color); opacity: 0.8; }
+        #file-input { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+        .controls-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
+        .control-group { display: flex; flex-direction: column; gap: 8px; }
+        .control-group label { font-size: 0.95rem; font-weight: bold; opacity: 0.9; }
+        .dimension-inputs { display: flex; gap: 10px; align-items: center; }
+        select, input[type="number"] { padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background-color: var(--bg-color); color: var(--text-color); width: 100%; font-size: 1rem; }
+        .action-btn { width: 100%; padding: 15px; border: none; border-radius: 8px; background-color: var(--primary-color); color: var(--bg-color); font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: background-color 0.3s, transform 0.1s; margin-top: 10px; }
+        .action-btn:hover { background-color: var(--hover-color); }
+        .action-btn:active { transform: scale(0.98); }
+        #preview-container { margin-top: 20px; text-align: center; display: none; background: var(--bg-color); padding: 20px; border-radius: 10px; border: 1px solid var(--border-color); }
+        #image-preview { max-width: 100%; max-height: 300px; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+        .file-info-box { display: flex; justify-content: space-between; margin-top: 15px; font-size: 0.9rem; padding: 10px; background: rgba(0, 255, 204, 0.1); border-radius: 5px; border: 1px solid rgba(0, 255, 204, 0.3); }
+        .download-link { display: inline-block; margin-top: 20px; padding: 15px 30px; background-color: #28a745; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; display: none; transition: background 0.3s; }
+        .download-link:hover { background-color: #218838; }
+        footer { text-align: center; padding: 20px; background-color: var(--container-bg); border-top: 1px solid var(--border-color); font-size: 0.9rem; opacity: 0.7; }
+        @media (max-width: 600px) { .controls-grid { grid-template-columns: 1fr; } header { flex-direction: column; gap: 15px; } }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body data-theme="dark">
+    <header>
+        <div class="logo">UtilityNest Image Tools</div>
+        <div class="header-controls">
+            <div id="google_translate_element"></div>
+            <button class="theme-toggle" id="theme-btn">☀️ Light Mode</button>
+        </div>
+    </header>
+    <main>
+        <h1>Smart Image Resizer & Converter</h1>
+        <div class="tool-container">
+            <div class="upload-area">
+                <p>Drag & Drop an image here or Click to Browse</p>
+                <input type="file" id="file-input" accept="image/jpeg, image/png, image/webp">
+            </div>
+            <div id="preview-container">
+                <img id="image-preview" src="" alt="Preview">
+                <div class="file-info-box" id="file-info-box">
+                    <span id="original-size">Size: 0 KB</span>
+                    <span id="original-dim">Dim: 0 x 0</span>
+                </div>
+            </div>
+            <div class="controls-grid" style="margin-top: 25px;">
+                <div class="control-group">
+                    <label>Convert Format To</label>
+                    <select id="format-select">
+                        <option value="image/jpeg">JPG / JPEG</option>
+                        <option value="image/png">PNG</option>
+                        <option value="image/webp">WEBP</option>
+                        <option value="application/pdf">PDF Document (Perfect Fit)</option>
+                    </select>
+                </div>
+                <div class="control-group" id="compression-group">
+                    <label>File Size Reduction</label>
+                    <select id="quality-select">
+                        <option value="1.0">Original Quality (No Reduce)</option>
+                        <option value="0.8">Medium Reduce (Recommended)</option>
+                        <option value="0.5">High Reduce</option>
+                        <option value="0.2">Super Reduce (For Job Applications)</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>Custom Dimensions (Optional)</label>
+                    <div class="dimension-inputs">
+                        <input type="number" id="custom-width" placeholder="Width (px)">
+                        <span>✖</span>
+                        <input type="number" id="custom-height" placeholder="Height (px)">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Preset Sizes</label>
+                    <select id="preset-select">
+                        <option value="">Keep Original Size</option>
+                        <option value="300x300">300 x 300 (Job Photo)</option>
+                        <option value="300x80">300 x 80 (Job Signature)</option>
+                        <option value="1920x1080">1920 x 1080 (FHD)</option>
+                        <option value="1280x720">1280 x 720 (HD)</option>
+                    </select>
+                </div>
+            </div>
+            <button class="action-btn" id="process-btn">Process & Convert</button>
+            <div style="text-align: center;">
+                <a id="download-btn" class="download-link" href="#" download>Download Result</a>
+                <p id="final-size-info" style="margin-top: 10px; color: var(--primary-color); font-weight: bold; display: none;"></p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        &copy; 2026 | Powered by <strong>UtilityNest</strong> | All Rights Reserved.
+    </footer>
+    <script type="text/javascript">
+        function googleTranslateElementInit() { new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element'); }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+        const themeBtn = document.getElementById('theme-btn');
+        const body = document.body;
+        themeBtn.addEventListener('click', () => {
+            if (body.getAttribute('data-theme') === 'dark') { body.setAttribute('data-theme', 'light'); themeBtn.textContent = '🌙 Dark Mode'; } 
+            else { body.setAttribute('data-theme', 'dark'); themeBtn.textContent = '☀️ Light Mode'; }
+        });
+
+        const fileInput = document.getElementById('file-input');
+        const imagePreview = document.getElementById('image-preview');
+        const previewContainer = document.getElementById('preview-container');
+        const formatSelect = document.getElementById('format-select');
+        const qualitySelect = document.getElementById('quality-select');
+        const compressionGroup = document.getElementById('compression-group');
+        const customWidth = document.getElementById('custom-width');
+        const customHeight = document.getElementById('custom-height');
+        const presetSelect = document.getElementById('preset-select');
+        const processBtn = document.getElementById('process-btn');
+        const downloadBtn = document.getElementById('download-btn');
+        const originalSizeTxt = document.getElementById('original-size');
+        const originalDimTxt = document.getElementById('original-dim');
+        const finalSizeInfo = document.getElementById('final-size-info');
+        
+        let currentImage = null; let originalFileName = ""; let origFileSize = 0;
+
+        formatSelect.addEventListener('change', (e) => {
+            if(e.target.value === 'image/png' || e.target.value === 'application/pdf') { compressionGroup.style.opacity = '0.5'; } 
+            else { compressionGroup.style.opacity = '1'; }
+        });
+
+        presetSelect.addEventListener('change', (e) => {
+            if(e.target.value) { const [w, h] = e.target.value.split('x'); customWidth.value = w; customHeight.value = h; } 
+            else { customWidth.value = ''; customHeight.value = ''; }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0]; if (!file) return;
+            originalFileName = file.name.split('.')[0]; origFileSize = (file.size / 1024).toFixed(2);
+            originalSizeTxt.textContent = `Original Size: ${origFileSize} KB`;
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                currentImage = new Image();
+                currentImage.onload = () => {
+                    imagePreview.src = currentImage.src;
+                    originalDimTxt.textContent = `Dim: ${currentImage.width} x ${currentImage.height} px`;
+                    previewContainer.style.display = 'block'; downloadBtn.style.display = 'none'; finalSizeInfo.style.display = 'none';
+                    if(!customWidth.value && !customHeight.value && presetSelect.value === '') { customWidth.value = currentImage.width; customHeight.value = currentImage.height; }
+                };
+                currentImage.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+
+        processBtn.addEventListener('click', () => {
+            if (!currentImage) { alert("Please upload an image first."); return; }
+            const format = formatSelect.value; const quality = parseFloat(qualitySelect.value);
+            let finalWidth = parseInt(customWidth.value) || currentImage.width; let finalHeight = parseInt(customHeight.value) || currentImage.height;
+            processBtn.textContent = "Processing..."; processBtn.disabled = true;
+
+            setTimeout(() => {
+                if (format === 'application/pdf') {
+                    const { jsPDF } = window.jspdf;
+                    const canvas = document.createElement('canvas'); canvas.width = finalWidth; canvas.height = finalHeight;
+                    const ctx = canvas.getContext('2d'); ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, canvas.width, canvas.height); ctx.drawImage(currentImage, 0, 0, finalWidth, finalHeight);
+                    const resizedDataUrl = canvas.toDataURL('image/jpeg', 1.0);
+                    const pdfOrientation = (finalWidth > finalHeight) ? 'landscape' : 'portrait';
+                    const doc = new jsPDF({ orientation: pdfOrientation, unit: 'mm', format: 'a4' });
+                    const margin = 10; const maxW = doc.internal.pageSize.getWidth() - margin * 2; const maxH = doc.internal.pageSize.getHeight() - margin * 2;
+                    const ratio = Math.min(maxW / finalWidth, maxH / finalHeight); const imgW = finalWidth * ratio; const imgH = finalHeight * ratio;
+                    const x = (doc.internal.pageSize.getWidth() - imgW) / 2; const y = (doc.internal.pageSize.getHeight() - imgH) / 2;
+                    doc.addImage(resizedDataUrl, 'JPEG', x, y, imgW, imgH); doc.save(`${originalFileName}_UtilityNest.pdf`);
+                    processBtn.textContent = "Process & Convert"; processBtn.disabled = false;
+                    finalSizeInfo.textContent = `PDF Generated Successfully!`; finalSizeInfo.style.display = 'block';
+                } else {
+                    const canvas = document.createElement('canvas'); canvas.width = finalWidth; canvas.height = finalHeight;
+                    const ctx = canvas.getContext('2d'); ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, canvas.width, canvas.height); ctx.drawImage(currentImage, 0, 0, finalWidth, finalHeight);
+                    const dataUrl = canvas.toDataURL(format, quality);
+                    const fileSize = Math.round((dataUrl.length - ('data:' + format + ';base64,').length)*3/4); const finalKb = (fileSize / 1024).toFixed(2);
+                    finalSizeInfo.textContent = `New Size: ${finalKb} KB (Reduced from ${origFileSize} KB) | Dim: ${finalWidth}x${finalHeight}`; finalSizeInfo.style.display = 'block';
+                    let ext = format.split('/')[1]; if(ext === 'jpeg') ext = 'jpg';
+                    downloadBtn.href = dataUrl; downloadBtn.download = `${originalFileName}_UtilityNest.${ext}`; downloadBtn.style.display = 'inline-block';
+                    processBtn.textContent = "Process & Convert"; processBtn.disabled = false;
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html>
