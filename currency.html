@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Advanced SEO Tags -->
-    <title>Live Currency Converter | UtilityNest</title>
-    <meta name="description" content="Real-time global currency converter. Check live exchange rates for USD to BDT, EUR, GBP, and more instantly with UtilityNest.">
-    <meta name="keywords" content="currency converter, live exchange rate, usd to bdt, UtilityNest, forex calculator, real-time currency, online converter">
+    <title>Live Currency Converter & Exchange Rates | UtilityNest</title>
+    <meta name="description" content="Calculate real-time global currency exchange rates instantly. Convert USD to BDT, EUR, GBP, and 150+ currencies with UtilityNest's accurate forex tool.">
+    <meta name="keywords" content="currency converter, live exchange rate, usd to bdt, UtilityNest, forex calculator, real-time currency, online converter, foreign exchange, money converter">
     <meta name="author" content="UtilityNest">
     <meta name="robots" content="index, follow">
+
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="Live Currency Converter | UtilityNest">
+    <meta property="og:description" content="Real-time global currency converter. Check live exchange rates easily.">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "UtilityNest Currency Converter",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "description": "Real-time currency converter providing live global exchange rates."
+    }
+    </script>
 
     <style>
         :root { --bg-color: #121212; --text-color: #ffffff; --primary-color: #ffaa00; --container-bg: #1e1e1e; --border-color: #333; --hover-color: #e69900; }
@@ -30,17 +49,35 @@
         .input-group { margin-bottom: 25px; }
         .input-group label { display: block; margin-bottom: 8px; font-weight: bold; opacity: 0.9; }
         .currency-input-wrapper { display: flex; gap: 10px; }
-        input[type="number"], select { padding: 15px; border-radius: 8px; border: 1px solid var(--border-color); background-color: var(--bg-color); color: var(--text-color); font-size: 1.1rem; outline: none; }
+        input[type="number"], select { padding: 15px; border-radius: 8px; border: 1px solid var(--border-color); background-color: var(--bg-color); color: var(--text-color); font-size: 1.1rem; outline: none; width: 100%; }
         input[type="number"] { flex: 2; } select { flex: 1; font-weight: bold; cursor: pointer; }
         input[type="number"]:focus, select:focus { border-color: var(--primary-color); }
         .swap-btn { background-color: transparent; border: 2px solid var(--border-color); color: var(--text-color); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px auto; cursor: pointer; font-size: 1.2rem; transition: all 0.3s; }
         .swap-btn:hover { border-color: var(--primary-color); color: var(--primary-color); transform: rotate(180deg); }
         .result-box { background-color: var(--bg-color); padding: 20px; border-radius: 10px; text-align: center; border: 1px solid var(--border-color); }
-        .result-text { font-size: 2rem; font-weight: bold; color: var(--primary-color); word-break: break-all; }
+        .result-text { font-size: 2rem; font-weight: bold; color: var(--primary-color); word-break: break-word; line-height: 1.2; }
         .rate-info { margin-top: 10px; font-size: 0.9rem; opacity: 0.7; }
         .loading { text-align: center; margin-top: 10px; font-size: 0.9rem; color: var(--primary-color); display: none; }
+        
+        /* SEO Section CSS */
+        .seo-content { width: 100%; max-width: 800px; margin: 50px auto 20px; padding: 30px; background-color: var(--container-bg); border-radius: 15px; border: 1px solid var(--border-color); box-shadow: 0 5px 15px rgba(0,0,0,0.1); line-height: 1.6; }
+        .seo-content h2 { color: var(--primary-color); font-size: 1.8rem; margin-bottom: 15px; margin-top: 25px; }
+        .seo-content h2:first-child { margin-top: 0; }
+        .seo-content p { opacity: 0.85; margin-bottom: 15px; }
+        .seo-content ul { margin-left: 20px; margin-bottom: 15px; opacity: 0.85; }
+        .faq-item { margin-bottom: 20px; }
+        .faq-q { font-weight: bold; color: var(--primary-color); margin-bottom: 5px; }
+        .faq-a { opacity: 0.85; }
+
         footer { text-align: center; padding: 20px; background-color: var(--container-bg); border-top: 1px solid var(--border-color); font-size: 0.9rem; opacity: 0.7; }
-        @media (max-width: 600px) { header { flex-direction: column; gap: 15px; } }
+        
+        /* Mobile Responsive Fixes */
+        @media (max-width: 600px) { 
+            header { flex-direction: column; gap: 15px; } 
+            .currency-input-wrapper { flex-direction: column; } 
+            .result-text { font-size: 1.6rem; }
+            .converter-container { padding: 20px; }
+        }
     </style>
 </head>
 <body data-theme="dark">
@@ -76,6 +113,42 @@
                 <div class="rate-info" id="rate-info">1 USD = 110 BDT</div>
             </div>
         </div>
+
+        <!-- SEO Text Content Section -->
+        <section class="seo-content">
+            <h2>Accurate & Real-Time Currency Converter</h2>
+            <p>Welcome to the <strong>UtilityNest Currency Converter</strong>. Whether you are traveling abroad, managing an international business, or simply tracking global forex markets, our free online tool provides instant and accurate exchange rates for over 150 global currencies, including USD, BDT, EUR, GBP, and INR.</p>
+            
+            <h2>How to Calculate Exchange Rates</h2>
+            <ul>
+                <li><strong>Step 1:</strong> Enter the amount of money you want to convert in the top input box.</li>
+                <li><strong>Step 2:</strong> Select your base currency (e.g., USD - US Dollar) from the drop-down menu.</li>
+                <li><strong>Step 3:</strong> Choose the target currency (e.g., BDT - Bangladeshi Taka) you want to convert to.</li>
+                <li><strong>Step 4:</strong> The live converted amount and exact single-unit exchange rate will appear instantly in the result box.</li>
+            </ul>
+
+            <h2>Key Features of Our Converter</h2>
+            <ul>
+                <li><strong>Live Data Updates:</strong> We fetch real-time market data so you always get the latest exchange rates.</li>
+                <li><strong>Mobile Friendly:</strong> Designed perfectly for smartphones, tablets, and desktops for calculations on the go.</li>
+                <li><strong>Fast & Lightweight:</strong> Instant calculations without reloading the page.</li>
+                <li><strong>Dark & Light Mode:</strong> Toggle themes for comfortable viewing day or night.</li>
+            </ul>
+
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div class="faq-item">
+                <div class="faq-q">Are the currency exchange rates accurate?</div>
+                <div class="faq-a">Yes. We use reliable, real-time API integrations that fetch updated forex market rates multiple times a day to ensure high accuracy.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Can I convert USD to BDT (Bangladeshi Taka)?</div>
+                <div class="faq-a">Absolutely! USD to BDT is one of our most popular conversions. Simply select USD as the 'From' currency and BDT as the 'To' currency.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Is this tool free to use?</div>
+                <div class="faq-a">Yes, the UtilityNest Currency Converter is 100% free with no limits on how many times you can calculate exchange rates.</div>
+            </div>
+        </section>
     </main>
     <footer>
         &copy; 2026 | Powered by <strong>UtilityNest</strong> | All Rights Reserved.
