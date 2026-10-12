@@ -148,14 +148,21 @@
             else { body.setAttribute('data-theme', 'dark'); themeBtn.textContent = '☀️ Light Mode'; }
         });
 
-        /* Improved Exit Intent Rating Logic */
+        /* Improved Mobile & Desktop Rating Logic */
         const ratingModal = document.getElementById('rating-modal');
         function showRating() {
             if(!localStorage.getItem('utilitynest_rated')) {
                 ratingModal.style.display = 'flex';
             }
         }
+        
+        // ১. ডেস্কটপের জন্য (মাউস সরালে আসবে)
         document.addEventListener('mouseleave', (e) => { if(e.clientY < 0) showRating(); });
+        
+        // ২. মোবাইলের জন্য স্মার্ট টাইমার (ওয়েবসাইটে ঢোকার ১৫ সেকেন্ড পর অটোমেটিক আসবে)
+        setTimeout(showRating, 15000); 
+
+        // ৩. ট্যাব পরিবর্তন করলে
         document.addEventListener('visibilitychange', () => { if(document.hidden) showRating(); });
         
         const stars = document.querySelectorAll('.stars span');
