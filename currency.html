@@ -3,41 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Advanced SEO Tags -->
     <title>Live Currency Converter & Exchange Rates | UtilityNest</title>
-    <meta name="description" content="Calculate real-time global currency exchange rates instantly. Convert USD to BDT, EUR, GBP, and 150+ currencies with UtilityNest's accurate forex tool.">
-    <meta name="keywords" content="currency converter, live exchange rate, usd to bdt, UtilityNest, forex calculator, real-time currency, online converter, foreign exchange, money converter">
+    <meta name="description" content="Calculate real-time global currency exchange rates instantly. Convert USD to BDT, EUR, GBP, and 150+ currencies.">
+    <meta name="keywords" content="currency converter, live exchange rate, usd to bdt, UtilityNest, forex calculator, real-time currency, online converter">
     <meta name="author" content="UtilityNest">
     <meta name="robots" content="index, follow">
-
-    <!-- Open Graph for Social Media -->
     <meta property="og:title" content="Live Currency Converter | UtilityNest">
-    <meta property="og:description" content="Real-time global currency converter. Check live exchange rates easily.">
-    <meta property="og:type" content="website">
-
-    <!-- Favicon -->
+    <!-- Favicon PNG -->
     <link rel="icon" type="image/png" href="favicon.png">
-
-    <!-- JSON-LD Schema Markup -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "UtilityNest Currency Converter",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "All",
-      "description": "Real-time currency converter providing live global exchange rates."
-    }
-    </script>
 
     <style>
         :root { --bg-color: #121212; --text-color: #ffffff; --primary-color: #ffaa00; --container-bg: #1e1e1e; --border-color: #333; --hover-color: #e69900; }
         [data-theme="light"] { --bg-color: #f8f9fa; --text-color: #212529; --primary-color: #d35400; --container-bg: #ffffff; --border-color: #dee2e6; --hover-color: #a84300; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background-color 0.3s, color 0.3s; }
         body { background-color: var(--bg-color); color: var(--text-color); display: flex; flex-direction: column; min-height: 100vh; }
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background-color: var(--container-bg); border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .logo { font-size: 24px; font-weight: bold; color: var(--primary-color); text-shadow: 0 0 10px rgba(255, 170, 0, 0.3); display: flex; align-items: center; gap: 10px; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background-color: var(--container-bg); border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        
+        .logo { display: flex; align-items: center; font-size: 24px; font-weight: bold; color: var(--primary-color); }
+        /* Logo JPG */
+        .logo img { height: 45px; margin-right: 12px; border-radius: 8px; }
+        
         .header-controls { display: flex; align-items: center; gap: 20px; }
         #google_translate_element select { padding: 8px; border-radius: 5px; border: 1px solid var(--border-color); background-color: var(--container-bg); color: var(--text-color); outline: none; }
         .theme-toggle { background: none; border: 2px solid var(--primary-color); color: var(--primary-color); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s; }
@@ -59,7 +44,6 @@
         .rate-info { margin-top: 10px; font-size: 0.9rem; opacity: 0.7; }
         .loading { text-align: center; margin-top: 10px; font-size: 0.9rem; color: var(--primary-color); display: none; }
         
-        /* SEO Section CSS */
         .seo-content { width: 100%; max-width: 800px; margin: 50px auto 20px; padding: 30px; background-color: var(--container-bg); border-radius: 15px; border: 1px solid var(--border-color); box-shadow: 0 5px 15px rgba(0,0,0,0.1); line-height: 1.6; }
         .seo-content h2 { color: var(--primary-color); font-size: 1.8rem; margin-bottom: 15px; margin-top: 25px; }
         .seo-content h2:first-child { margin-top: 0; }
@@ -68,21 +52,30 @@
         .faq-item { margin-bottom: 20px; }
         .faq-q { font-weight: bold; color: var(--primary-color); margin-bottom: 5px; }
         .faq-a { opacity: 0.85; }
-
         footer { text-align: center; padding: 20px; background-color: var(--container-bg); border-top: 1px solid var(--border-color); font-size: 0.9rem; opacity: 0.7; }
         
-        /* Mobile Responsive Fixes */
-        @media (max-width: 600px) { 
-            header { flex-direction: column; gap: 15px; } 
-            .currency-input-wrapper { flex-direction: column; } 
-            .result-text { font-size: 1.6rem; }
-            .converter-container { padding: 20px; }
-        }
+        /* Rating System CSS */
+        .rating-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center; }
+        .rating-content { background: var(--container-bg); padding: 40px; border-radius: 15px; text-align: center; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 400px; width: 90%; }
+        .rating-content h3 { color: var(--primary-color); font-size: 1.5rem; margin-bottom: 10px; }
+        .rating-content p { margin-bottom: 20px; opacity: 0.8; }
+        .stars { display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; }
+        .stars span { font-size: 40px; cursor: pointer; color: #555; transition: color 0.3s, transform 0.2s; }
+        .stars span:hover, .stars span.active { color: #ffaa00; transform: scale(1.1); }
+        .rating-btns { display: flex; justify-content: center; gap: 15px; }
+        .btn-close-rating { padding: 10px 20px; background: transparent; border: 1px solid var(--border-color); color: var(--text-color); border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .btn-close-rating:hover { background: var(--border-color); }
+
+        @media (max-width: 600px) { header { flex-direction: column; gap: 15px; } .currency-input-wrapper { flex-direction: column; } .result-text { font-size: 1.6rem; } .converter-container { padding: 20px; } }
     </style>
 </head>
 <body data-theme="dark">
     <header>
-        <div class="logo">💱 UtilityNest Currency</div>
+        <div class="logo">
+            <!-- Ensure your JPG logo is named logo.jpg -->
+            <img src="logo.jpg" alt="UtilityNest Logo">
+            <span>UtilityNest Currency</span>
+        </div>
         <div class="header-controls">
             <div id="google_translate_element"></div>
             <button class="theme-toggle" id="theme-btn">☀️ Light Mode</button>
@@ -114,45 +107,35 @@
             </div>
         </div>
 
-        <!-- SEO Text Content Section -->
         <section class="seo-content">
             <h2>Accurate & Real-Time Currency Converter</h2>
-            <p>Welcome to the <strong>UtilityNest Currency Converter</strong>. Whether you are traveling abroad, managing an international business, or simply tracking global forex markets, our free online tool provides instant and accurate exchange rates for over 150 global currencies, including USD, BDT, EUR, GBP, and INR.</p>
-            
+            <p>Welcome to the <strong>UtilityNest Currency Converter</strong>. Easily calculate instant and accurate exchange rates for over 150 global currencies.</p>
             <h2>How to Calculate Exchange Rates</h2>
             <ul>
-                <li><strong>Step 1:</strong> Enter the amount of money you want to convert in the top input box.</li>
-                <li><strong>Step 2:</strong> Select your base currency (e.g., USD - US Dollar) from the drop-down menu.</li>
-                <li><strong>Step 3:</strong> Choose the target currency (e.g., BDT - Bangladeshi Taka) you want to convert to.</li>
-                <li><strong>Step 4:</strong> The live converted amount and exact single-unit exchange rate will appear instantly in the result box.</li>
+                <li><strong>Step 1:</strong> Enter the amount of money you want to convert.</li>
+                <li><strong>Step 2:</strong> Select your base currency and the target currency.</li>
+                <li><strong>Step 3:</strong> The live converted amount will appear instantly in the result box below.</li>
             </ul>
-
-            <h2>Key Features of Our Converter</h2>
-            <ul>
-                <li><strong>Live Data Updates:</strong> We fetch real-time market data so you always get the latest exchange rates.</li>
-                <li><strong>Mobile Friendly:</strong> Designed perfectly for smartphones, tablets, and desktops for calculations on the go.</li>
-                <li><strong>Fast & Lightweight:</strong> Instant calculations without reloading the page.</li>
-                <li><strong>Dark & Light Mode:</strong> Toggle themes for comfortable viewing day or night.</li>
-            </ul>
-
-            <h2>Frequently Asked Questions (FAQ)</h2>
-            <div class="faq-item">
-                <div class="faq-q">Are the currency exchange rates accurate?</div>
-                <div class="faq-a">Yes. We use reliable, real-time API integrations that fetch updated forex market rates multiple times a day to ensure high accuracy.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-q">Can I convert USD to BDT (Bangladeshi Taka)?</div>
-                <div class="faq-a">Absolutely! USD to BDT is one of our most popular conversions. Simply select USD as the 'From' currency and BDT as the 'To' currency.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-q">Is this tool free to use?</div>
-                <div class="faq-a">Yes, the UtilityNest Currency Converter is 100% free with no limits on how many times you can calculate exchange rates.</div>
-            </div>
         </section>
     </main>
     <footer>
         &copy; 2026 | Powered by <strong>UtilityNest</strong> | All Rights Reserved.
     </footer>
+
+    <!-- Rating Modal -->
+    <div id="rating-modal" class="rating-modal">
+        <div class="rating-content" id="rating-box">
+            <h3>Enjoying UtilityNest?</h3>
+            <p>Please rate your experience before you leave!</p>
+            <div class="stars">
+                <span data-val="1">★</span><span data-val="2">★</span><span data-val="3">★</span><span data-val="4">★</span><span data-val="5">★</span>
+            </div>
+            <div class="rating-btns">
+                <button class="btn-close-rating" id="close-rating">Maybe Later</button>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript">
         function googleTranslateElementInit() { new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element'); }
     </script>
@@ -165,6 +148,36 @@
             else { body.setAttribute('data-theme', 'dark'); themeBtn.textContent = '☀️ Light Mode'; }
         });
 
+        /* Improved Exit Intent Rating Logic */
+        const ratingModal = document.getElementById('rating-modal');
+        function showRating() {
+            if(!localStorage.getItem('utilitynest_rated')) {
+                ratingModal.style.display = 'flex';
+            }
+        }
+        document.addEventListener('mouseleave', (e) => { if(e.clientY < 0) showRating(); });
+        document.addEventListener('visibilitychange', () => { if(document.hidden) showRating(); });
+        
+        const stars = document.querySelectorAll('.stars span');
+        stars.forEach((star, index) => {
+            star.addEventListener('click', function() {
+                stars.forEach((s, i) => {
+                    if (i <= index) s.classList.add('active');
+                    else s.classList.remove('active');
+                });
+                localStorage.setItem('utilitynest_rated', 'true');
+                setTimeout(() => {
+                    document.getElementById('rating-box').innerHTML = '<h3 style="color:var(--primary-color); font-size:1.8rem;">Thank You! ❤️</h3><p>Your feedback helps us improve.</p>';
+                    setTimeout(() => ratingModal.style.display = 'none', 2000);
+                }, 1000);
+            });
+        });
+        document.getElementById('close-rating').addEventListener('click', () => {
+            ratingModal.style.display = 'none';
+            localStorage.setItem('utilitynest_rated', 'true');
+        });
+
+        /* Currency Converter Logic */
         const fromCurrency = document.getElementById('from-currency'); const toCurrency = document.getElementById('to-currency');
         const amountInput = document.getElementById('amount-input'); const resultInput = document.getElementById('result-input');
         const displayResult = document.getElementById('display-result'); const rateInfo = document.getElementById('rate-info');
