@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +6,30 @@
     
     <!-- Advanced SEO Tags -->
     <title>Stylish Font & Bio Generator Pro | UtilityNest</title>
-    <meta name="description" content="Generate cool, stylish fonts, zalgo text, and VIP emojis for Instagram, TikTok, and Facebook bio. Free social media font maker by UtilityNest.">
-    <meta name="keywords" content="stylish font generator, instagram bio font, zalgo text maker, VIP text emojis, UtilityNest, text repeater, fancy text generator">
+    <meta name="description" content="Generate cool, stylish fonts, zalgo text, and VIP emojis for Instagram, TikTok, and Facebook bio. Free social media fancy text maker by UtilityNest.">
+    <meta name="keywords" content="stylish font generator, instagram bio font, zalgo text maker, VIP text emojis, UtilityNest, text repeater, fancy text generator, cool fonts, copy paste fonts">
     <meta name="author" content="UtilityNest">
     <meta name="robots" content="index, follow">
+
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="Stylish Font & Bio Generator | UtilityNest">
+    <meta property="og:description" content="Generate cool fonts and VIP emojis for your social media bios instantly.">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "UtilityNest Stylish Font Generator",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All",
+      "description": "Generate stylish fonts and fancy text for Instagram and Facebook bios."
+    }
+    </script>
 
     <style>
         :root { --bg-color: #0f172a; --text-color: #f8fafc; --primary-color: #38bdf8; --container-bg: #1e293b; --border-color: #334155; --hover-color: #0284c7; --toast-bg: #10b981; }
@@ -47,6 +66,17 @@
         .copy-btn:hover { background-color: var(--hover-color); } .copy-btn:active { transform: scale(0.95); }
         #toast { visibility: hidden; min-width: 250px; background-color: var(--toast-bg); color: #fff; text-align: center; border-radius: 8px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.3s, visibility 0.3s, bottom 0.3s; }
         #toast.show { visibility: visible; opacity: 1; bottom: 50px; }
+        
+        /* SEO Section CSS */
+        .seo-content { width: 100%; max-width: 800px; margin: 50px auto 20px; padding: 30px; background-color: var(--container-bg); border-radius: 15px; border: 1px solid var(--border-color); box-shadow: 0 5px 15px rgba(0,0,0,0.1); line-height: 1.6; }
+        .seo-content h2 { color: var(--primary-color); font-size: 1.8rem; margin-bottom: 15px; margin-top: 25px; }
+        .seo-content h2:first-child { margin-top: 0; }
+        .seo-content p { opacity: 0.85; margin-bottom: 15px; }
+        .seo-content ul { margin-left: 20px; margin-bottom: 15px; opacity: 0.85; }
+        .faq-item { margin-bottom: 20px; }
+        .faq-q { font-weight: bold; color: var(--primary-color); margin-bottom: 5px; }
+        .faq-a { opacity: 0.85; }
+
         footer { text-align: center; padding: 20px; background-color: var(--container-bg); border-top: 1px solid var(--border-color); font-size: 0.9rem; opacity: 0.7; margin-top: auto; }
         @media (max-width: 600px) { header { flex-direction: column; gap: 15px; } .font-card { flex-direction: column; align-items: stretch; gap: 15px; } .copy-btn { width: 100%; } .tool-ext input { margin-bottom: 10px; width: 100%; } }
     </style>
@@ -92,6 +122,38 @@
                 </div>
             </div>
             <div class="results-container" id="results"></div>
+            
+            <!-- SEO Text Content Section -->
+            <section class="seo-content">
+                <h2>Free Stylish Font & Bio Generator</h2>
+                <p>Looking to make your Instagram, TikTok, Facebook, or WhatsApp profile stand out? The <strong>UtilityNest Font Generator</strong> is the ultimate tool to instantly transform normal text into fancy, aesthetic, and cool looking fonts. Stand out from the crowd with unique text styles and VIP emojis!</p>
+                
+                <h2>How to Generate Cool Fonts</h2>
+                <ul>
+                    <li><strong>Step 1:</strong> Type or paste your normal text into the text box above.</li>
+                    <li><strong>Step 2:</strong> Scroll down to see your text magically converted into dozens of different stylish fonts (like Bold, Italic, Gothic, Zalgo, and more).</li>
+                    <li><strong>Step 3:</strong> Click the "Copy" button next to your favorite font style.</li>
+                    <li><strong>Step 4:</strong> Paste it into your social media bio, captions, or messages.</li>
+                </ul>
+
+                <h2>Extra Features Included</h2>
+                <ul>
+                    <li><strong>Text Repeater:</strong> Want to send 100 "I Love You" messages? Use our built-in text repeater to multiply your text instantly.</li>
+                    <li><strong>VIP Emoji Decorator:</strong> Add gaming borders, cute stars, or VIP aesthetic wings to your name with a single click.</li>
+                    <li><strong>Real-Time Word Count:</strong> Keep track of your character and word count to ensure your text fits perfectly within social media limits.</li>
+                </ul>
+
+                <h2>Frequently Asked Questions (FAQ)</h2>
+                <div class="faq-item">
+                    <div class="faq-q">Will these fonts work on Instagram and TikTok?</div>
+                    <div class="faq-a">Yes! Our tool uses standard Unicode characters, meaning the generated fonts are fully supported by Instagram, TikTok, Facebook, Twitter, and WhatsApp.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">What is Zalgo text?</div>
+                    <div class="faq-a">Zalgo text is a "glitchy" or "creepy" looking font style that adds random symbols above and below your letters. It’s very popular for gaming profiles and memes.</div>
+                </div>
+            </section>
+
         </div>
     </main>
     <div id="toast">Copied to clipboard! ✓</div>
