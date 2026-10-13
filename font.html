@@ -3,26 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stylish Font & Bio Generator Pro | UtilityNest</title>
-    <meta name="description" content="Generate cool, stylish fonts, zalgo text, and VIP emojis for Instagram, TikTok, and Facebook bio. Free social media fancy text maker by UtilityNest.">
-    <meta name="keywords" content="stylish font generator, instagram bio font, zalgo text maker, VIP text emojis, UtilityNest, fancy text generator">
+    
+    <!-- ================= Primary SEO Meta Tags ================= -->
+    <title>Stylish Font Generator & VIP Text Maker | UtilityNest</title>
+    <meta name="title" content="Stylish Font Generator & VIP Text Maker | UtilityNest">
+    <meta name="description" content="Generate cool, stylish fonts, zalgo text, text repeater, and VIP emojis for your Instagram, TikTok, and Facebook bio. 100% Free online tool by UtilityNest.">
+    <meta name="keywords" content="stylish font generator, instagram bio font, zalgo text maker, VIP text emojis, text repeater, fancy text generator, UtilityNest tools">
     <meta name="author" content="UtilityNest">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Stylish Font & Bio Generator | UtilityNest">
+    <link rel="canonical" href="https://utilitynest123.github.io/font.html">
     <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- ================= Open Graph / Facebook ================= -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilitynest123.github.io/font.html">
+    <meta property="og:title" content="Stylish Font & Bio Generator | UtilityNest">
+    <meta property="og:description" content="Create fancy fonts, repeat text, and generate VIP bios instantly. No installation required.">
+    <meta property="og:image" content="https://utilitynest123.github.io/logo.jpg">
+
+    <!-- ================= Twitter ================= -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://utilitynest123.github.io/font.html">
+    <meta property="twitter:title" content="Stylish Font & Bio Generator | UtilityNest">
+    <meta property="twitter:description" content="Create fancy fonts, repeat text, and generate VIP bios instantly.">
+    <meta property="twitter:image" content="https://utilitynest123.github.io/logo.jpg">
+
+    <!-- ================= JSON-LD Schema Markup ================= -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "UtilityNest Stylish Font Generator",
+      "url": "https://utilitynest123.github.io/font.html",
+      "description": "Generate cool, stylish fonts, zalgo text, and VIP emojis for Instagram, TikTok, and Facebook bio for free.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
 
     <style>
         :root { --bg-color: #0f172a; --text-color: #f8fafc; --primary-color: #38bdf8; --container-bg: #1e293b; --border-color: #334155; --hover-color: #0284c7; --toast-bg: #10b981; }
         [data-theme="light"] { --bg-color: #f1f5f9; --text-color: #0f172a; --primary-color: #2563eb; --container-bg: #ffffff; --border-color: #cbd5e1; --hover-color: #1d4ed8; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
         body { background-color: var(--bg-color); color: var(--text-color); display: flex; flex-direction: column; min-height: 100vh; }
-        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background-color: var(--container-bg); border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background-color: var(--container-bg); border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.05); flex-wrap: wrap; gap: 15px; }
         
-        .logo { display: flex; align-items: center; font-size: 22px; font-weight: bold; color: var(--primary-color); }
+        .logo a { display: flex; align-items: center; font-size: 22px; font-weight: bold; color: var(--primary-color); text-decoration: none; }
         .logo img { height: 45px; margin-right: 12px; border-radius: 8px; }
         
-        .header-controls { display: flex; align-items: center; gap: 15px; }
-        #google_translate_element select { padding: 8px; border-radius: 5px; border: 1px solid var(--border-color); background-color: var(--container-bg); color: var(--text-color); outline: none; }
+        .header-controls { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        
+        /* Home Button */
+        .home-btn { background-color: var(--primary-color); color: var(--bg-color); padding: 8px 16px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem; transition: 0.3s; }
+        .home-btn:hover { background-color: var(--hover-color); }
+
+        /* Clean Google Translate CSS */
+        .goog-te-combo { padding: 8px; border-radius: 5px; background-color: var(--container-bg); color: var(--text-color); border: 1px solid var(--border-color); outline: none; font-size: 14px; }
+        .goog-logo-link { display: none !important; }
+        .goog-te-gadget { color: transparent !important; font-size: 0px; }
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+
         .theme-toggle { background: none; border: 2px solid var(--primary-color); color: var(--primary-color); padding: 6px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s; }
         .theme-toggle:hover { background-color: var(--primary-color); color: var(--container-bg); }
         main { flex: 1; padding: 30px 20px; display: flex; flex-direction: column; align-items: center; }
@@ -72,16 +118,20 @@
         .btn-close-rating { padding: 10px 20px; background: transparent; border: 1px solid var(--border-color); color: var(--text-color); border-radius: 8px; cursor: pointer; font-weight: bold; }
         .btn-close-rating:hover { background: var(--border-color); }
 
-        @media (max-width: 600px) { header { flex-direction: column; gap: 15px; } .font-card { flex-direction: column; align-items: stretch; gap: 15px; } .copy-btn { width: 100%; } .tool-ext input { margin-bottom: 10px; width: 100%; } }
+        @media (max-width: 600px) { header { flex-direction: column; gap: 15px; text-align: center; } .font-card { flex-direction: column; align-items: stretch; gap: 15px; } .copy-btn { width: 100%; } .tool-ext input { margin-bottom: 10px; width: 100%; } }
     </style>
 </head>
 <body data-theme="dark">
     <header>
         <div class="logo">
-            <img src="logo.jpg" alt="UtilityNest Logo">
-            <span>UtilityNest Fonts</span>
+            <a href="index.html">
+                <img src="logo.jpg" alt="UtilityNest Logo">
+                <span>UtilityNest</span>
+            </a>
         </div>
         <div class="header-controls">
+            <!-- Home Button -->
+            <a href="index.html" class="home-btn">🏠 Home</a>
             <div id="google_translate_element"></div>
             <button class="theme-toggle" id="theme-btn">☀️ Light Mode</button>
         </div>
@@ -119,13 +169,13 @@
             <div class="results-container" id="results"></div>
             
             <section class="seo-content">
-                <h2>Free Stylish Font Generator</h2>
-                <p>Looking to make your Instagram, TikTok, or Facebook profile stand out? Transform normal text into fancy, aesthetic, and cool looking fonts instantly.</p>
+                <h2>Free Stylish Font Generator & Text Repeater</h2>
+                <p>Looking to make your Instagram, TikTok, or Facebook profile stand out? Transform normal text into fancy, aesthetic, and cool looking fonts instantly using our free web tool. No apps or software needed.</p>
                 <h2>How to Generate Cool Fonts</h2>
                 <ul>
                     <li><strong>Step 1:</strong> Type or paste your normal text into the text box above.</li>
                     <li><strong>Step 2:</strong> Scroll down to see your text magically converted into dozens of different stylish fonts.</li>
-                    <li><strong>Step 3:</strong> Click "Copy" next to your favorite font and paste it anywhere.</li>
+                    <li><strong>Step 3:</strong> Click "Copy" next to your favorite font and paste it anywhere in your social media bio or chats.</li>
                 </ul>
             </section>
         </div>
