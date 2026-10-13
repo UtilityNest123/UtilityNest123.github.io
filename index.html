@@ -3,47 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- ================= Primary SEO Meta Tags ================= -->
     <title>UtilityNest - Free Online Image Resizer, Currency Converter & Font Generator</title>
-    <meta name="title" content="UtilityNest - Free Online Image Resizer, Currency Converter & Font Generator">
-    <meta name="description" content="UtilityNest provides free and fast web tools including an Image Resizer & PDF converter, Live Currency Converter, and Stylish Font Generator. 100% Free & Mobile Friendly.">
-    <meta name="keywords" content="utilitynest, image resizer, convert to pdf, live currency converter, stylish font generator, text repeater, free online tools">
-    <meta name="author" content="Md Jobair">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://utilitynest123.github.io/">
+    <meta name="description" content="UtilityNest provides free and fast web tools including an Image Resizer, Live Currency Converter, and Stylish Font Generator.">
     <link rel="icon" href="favicon.png" type="image/png">
 
-    <!-- ================= Open Graph / Facebook ================= -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://utilitynest123.github.io/">
-    <meta property="og:title" content="UtilityNest - All Your Essential Web Tools">
-    <meta property="og:description" content="Access our free Image Resizer, Live Currency Converter, and Stylish Font Generator. Quick, easy, and ad-free.">
-    <meta property="og:image" content="https://utilitynest123.github.io/logo.jpg">
-
-    <!-- ================= Twitter ================= -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://utilitynest123.github.io/">
-    <meta property="twitter:title" content="UtilityNest - Essential Web Tools">
-    <meta property="twitter:description" content="Access our free Image Resizer, Live Currency Converter, and Stylish Font Generator.">
-    <meta property="twitter:image" content="https://utilitynest123.github.io/logo.jpg">
-
-    <!-- ================= JSON-LD Schema Markup ================= -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "UtilityNest",
-      "url": "https://utilitynest123.github.io/",
-      "description": "A collection of free utility tools including Image Resizer, Currency Converter, and Font Generator.",
-      "author": {
-        "@type": "Person",
-        "name": "Md Jobair"
-      }
-    }
-    </script>
-
-    <!-- ================= CSS Styles ================= -->
     <style>
         :root {
             --bg-color: #121212;
@@ -51,16 +14,39 @@
             --text-color: #ffffff;
             --text-muted: #a0a0a0;
             --primary-color: #4CAF50;
-            --hover-color: #45a049;
         }
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0; padding: 0; text-align: center; overflow-x: hidden;
+            position: relative;
         }
+
+        /* Fixed Google Translate Dropdown */
+        #google_translate_element {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
+        }
+        .goog-te-combo {
+            padding: 8px;
+            border-radius: 5px;
+            background-color: var(--card-bg);
+            color: #ffffff;
+            border: 1px solid var(--primary-color);
+            font-size: 14px;
+            outline: none;
+        }
+        /* Hiding Google branding texts */
+        .goog-logo-link { display: none !important; }
+        .goog-te-gadget { color: transparent !important; font-size: 0px; }
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+
         /* Header & Logo */
-        .header-section { padding: 40px 20px 20px; }
+        .header-section { padding: 60px 20px 20px; }
         .header-section img {
             width: 120px; height: 120px; border-radius: 50%;
             border: 3px solid var(--primary-color); object-fit: cover; margin-bottom: 15px;
@@ -68,9 +54,6 @@
         .header-section h1 { margin: 0; font-size: 2.5rem; color: var(--primary-color); }
         .header-section p { color: var(--text-muted); font-size: 1.1rem; margin-top: 10px; }
         
-        /* Google Translate Widget */
-        #google_translate_element { margin: 15px auto; display: inline-block; }
-
         /* Tools Grid */
         .tools-container {
             display: flex; flex-wrap: wrap; justify-content: center;
@@ -80,7 +63,7 @@
             background-color: var(--card-bg); width: 300px; padding: 30px 20px;
             border-radius: 12px; text-decoration: none; color: var(--text-color);
             border: 1px solid #333; transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3); position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
         .tool-card:hover {
             transform: translateY(-8px); border-color: var(--primary-color);
@@ -90,43 +73,18 @@
         .tool-card h2 { margin: 10px 0; font-size: 1.5rem; }
         .tool-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
 
-        /* SEO Content Section */
-        .seo-content {
-            max-width: 800px; margin: 0 auto 50px; padding: 20px;
-            text-align: left; background: var(--card-bg); border-radius: 8px;
-        }
-        .seo-content h3 { color: var(--primary-color); }
-        .seo-content p { color: var(--text-muted); line-height: 1.6; }
-
-        /* Rating Modal */
-        .rating-modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 1000;
-        }
-        .modal-content {
-            background: var(--card-bg); padding: 30px; border-radius: 12px; text-align: center;
-            border: 1px solid var(--primary-color); position: relative; width: 90%; max-width: 400px;
-        }
-        .close-btn {
-            position: absolute; top: 10px; right: 15px; font-size: 1.5rem;
-            cursor: pointer; color: var(--text-muted);
-        }
-        .stars { font-size: 2rem; cursor: pointer; color: #ffcc00; margin: 15px 0; }
-        .stars span { transition: transform 0.2s; display: inline-block; }
-        .stars span:hover { transform: scale(1.2); }
-        #thankYouMsg { color: var(--primary-color); font-weight: bold; display: none; margin-top: 10px; }
-
-        .footer { padding: 20px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid #333; }
+        .footer { padding: 20px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid #333; margin-top: 20px;}
     </style>
 </head>
 <body>
+
+    <!-- Google Translate in Top Right Corner -->
+    <div id="google_translate_element"></div>
 
     <div class="header-section">
         <img src="logo.jpg" alt="UtilityNest Logo">
         <h1>UtilityNest</h1>
         <p>Your Everyday Digital Tools in One Place</p>
-        <!-- Google Translate -->
-        <div id="google_translate_element"></div>
     </div>
 
     <main class="tools-container">
@@ -152,81 +110,17 @@
         </a>
     </main>
 
-    <!-- SEO Optimized Text Area for Google Bots -->
-    <article class="seo-content">
-        <h3>Why Choose UtilityNest?</h3>
-        <p>UtilityNest is a fast, secure, and 100% free collection of web utilities designed to make your daily digital tasks easier. Whether you need to compress an image for a job application, check the latest USD to BDT exchange rates, or generate fancy text for Instagram, our tools work seamlessly on both mobile and desktop without requiring any software installation.</p>
-    </article>
-
     <footer class="footer">
         &copy; 2026 UtilityNest | Developed by Md Jobair
     </footer>
 
-    <!-- Rating Popup Modal -->
-    <div class="rating-modal" id="ratingModal">
-        <div class="modal-content">
-            <span class="close-btn" id="closeModal">&times;</span>
-            <h2>Enjoying UtilityNest?</h2>
-            <p>Please rate your experience!</p>
-            <div class="stars" id="starContainer">
-                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-            </div>
-            <div id="thankYouMsg">Thank you for your feedback! ❤️</div>
-        </div>
-    </div>
-
-    <!-- ================= JavaScripts ================= -->
     <!-- Google Translate Script -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+            new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'bn,hi,es,fr,ar'}, 'google_translate_element');
         }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <!-- Rating Logic Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const modal = document.getElementById('ratingModal');
-            const closeBtn = document.getElementById('closeModal');
-            const stars = document.querySelectorAll('.stars span');
-            const thankYouMsg = document.getElementById('thankYouMsg');
-            
-            // Check Local Storage
-            const hasRated = localStorage.getItem('utilityNestRated');
-            
-            if (!hasRated) {
-                // Mobile: Show after 15 seconds
-                if (window.innerWidth < 768) {
-                    setTimeout(() => { modal.style.display = 'flex'; }, 15000);
-                } 
-                // Desktop: Exit Intent (Mouse moving out of window top)
-                else {
-                    document.addEventListener('mouseleave', (e) => {
-                        if (e.clientY < 0 && !localStorage.getItem('utilityNestRated')) {
-                            modal.style.display = 'flex';
-                        }
-                    });
-                }
-            }
-
-            // Close Button Logic
-            closeBtn.addEventListener('click', () => {
-                modal.style.display = 'none';
-                localStorage.setItem('utilityNestRated', 'true'); // Save state even if closed
-            });
-
-            // Star Click Logic
-            stars.forEach(star => {
-                star.addEventListener('click', () => {
-                    thankYouMsg.style.display = 'block';
-                    localStorage.setItem('utilityNestRated', 'true'); // Save state
-                    setTimeout(() => {
-                        modal.style.display = 'none';
-                    }, 2000);
-                });
-            });
-        });
-    </script>
 </body>
 </html>
