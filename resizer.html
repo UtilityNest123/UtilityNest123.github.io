@@ -11,7 +11,7 @@
     <meta property="og:title" content="Smart Image Resizer & Converter | UtilityNest">
     <meta property="og:description" content="Resize, compress, and convert images to PDF, JPG, PNG online instantly for free.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://utilitynest123.github.io/">
+    <meta property="og:url" content="https://utilitynest123.github.io/resizer.html">
     <link rel="icon" type="image/png" href="favicon.png">
 
     <style>
@@ -19,13 +19,25 @@
         [data-theme="light"] { --bg-color: #f4f4f9; --text-color: #333333; --primary-color: #007bff; --container-bg: #ffffff; --border-color: #dddddd; --hover-color: #0056b3; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background-color 0.3s, color 0.3s; }
         body { background-color: var(--bg-color); color: var(--text-color); display: flex; flex-direction: column; min-height: 100vh; }
-        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background-color: var(--container-bg); border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background-color: var(--container-bg); border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.1); flex-wrap: wrap; gap: 15px;}
         
-        .logo { display: flex; align-items: center; font-size: 24px; font-weight: bold; color: var(--primary-color); }
+        /* Logo & Home Link */
+        .logo a { display: flex; align-items: center; font-size: 24px; font-weight: bold; color: var(--primary-color); text-decoration: none; }
         .logo img { height: 45px; margin-right: 12px; border-radius: 8px; }
         
-        .header-controls { display: flex; align-items: center; gap: 20px; }
-        #google_translate_element select { padding: 8px; border-radius: 5px; border: 1px solid var(--border-color); background-color: var(--container-bg); color: var(--text-color); outline: none; }
+        .header-controls { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        
+        /* Home Button */
+        .home-btn { background-color: var(--primary-color); color: var(--bg-color); padding: 8px 16px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem; transition: 0.3s; }
+        .home-btn:hover { background-color: var(--hover-color); }
+
+        /* Clean Google Translate CSS */
+        .goog-te-combo { padding: 8px; border-radius: 5px; background-color: var(--container-bg); color: var(--text-color); border: 1px solid var(--border-color); outline: none; font-size: 14px; }
+        .goog-logo-link { display: none !important; }
+        .goog-te-gadget { color: transparent !important; font-size: 0px; }
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+
         .theme-toggle { background: none; border: 2px solid var(--primary-color); color: var(--primary-color); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s; }
         .theme-toggle:hover { background-color: var(--primary-color); color: var(--bg-color); }
         main { flex: 1; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
@@ -54,9 +66,7 @@
         .seo-content h2:first-child { margin-top: 0; }
         .seo-content p { opacity: 0.85; margin-bottom: 15px; }
         .seo-content ul { margin-left: 20px; margin-bottom: 15px; opacity: 0.85; }
-        .faq-item { margin-bottom: 20px; }
-        .faq-q { font-weight: bold; color: var(--primary-color); margin-bottom: 5px; }
-        .faq-a { opacity: 0.85; }
+        
         footer { text-align: center; padding: 20px; background-color: var(--container-bg); border-top: 1px solid var(--border-color); font-size: 0.9rem; opacity: 0.7; }
 
         /* Rating System CSS */
@@ -71,17 +81,21 @@
         .btn-close-rating { padding: 10px 20px; background: transparent; border: 1px solid var(--border-color); color: var(--text-color); border-radius: 8px; cursor: pointer; font-weight: bold; }
         .btn-close-rating:hover { background: var(--border-color); }
 
-        @media (max-width: 600px) { .controls-grid { grid-template-columns: 1fr; } header { flex-direction: column; gap: 15px; } }
+        @media (max-width: 600px) { .controls-grid { grid-template-columns: 1fr; } header { flex-direction: column; gap: 15px; text-align: center; } }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body data-theme="dark">
     <header>
         <div class="logo">
-            <img src="logo.jpg" alt="UtilityNest Logo">
-            <span>UtilityNest Tools</span>
+            <a href="index.html">
+                <img src="logo.jpg" alt="UtilityNest Logo">
+                <span>UtilityNest</span>
+            </a>
         </div>
         <div class="header-controls">
+            <!-- Home Button Added Here -->
+            <a href="index.html" class="home-btn">🏠 Home</a>
             <div id="google_translate_element"></div>
             <button class="theme-toggle" id="theme-btn">☀️ Light Mode</button>
         </div>
@@ -175,7 +189,6 @@
     <script type="text/javascript">
         function googleTranslateElementInit() { new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element'); }
     </script>
-    <!-- &hl=en added below to force English UI -->
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit&hl=en"></script>
     <script>
         const themeBtn = document.getElementById('theme-btn');
