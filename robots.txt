@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://utilitynest123.github.io/sitemap.xml
